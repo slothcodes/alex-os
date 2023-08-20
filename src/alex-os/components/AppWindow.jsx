@@ -1,5 +1,6 @@
 import React from 'react';
 import App from '../../App';
+import ControlBar from './ControlBar';
 
 const AppWindow = ({initialData, appId, position, size, isFocused, onClose, onMove, onResize, onFocusToggle}) => {
     // Initial Data State
@@ -108,6 +109,11 @@ const AppWindow = ({initialData, appId, position, size, isFocused, onClose, onMo
             onTouchEnd={handleTouchEnd}
             onTouchMove={handleTouchMove}
         >
+            <ControlBar 
+                onClose={() => onClose(appId)}
+                onMax={() => console.log('max')}
+                onMin={() => console.log('min')}
+            />
             <h1 className='window-bar'>Window</h1>
         </div>
     )}
@@ -115,9 +121,17 @@ const AppWindow = ({initialData, appId, position, size, isFocused, onClose, onMo
 const WindowManager = () => {
     // State To Track Open Windows
     const [windows, setWindows] = React.useState([
-        {id: "test", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: true},
-        {id: "newsReader", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: false},
+        {id: "test", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: true, isVisible: false},
+        {id: "newsReader", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: false, isVisible: false},
     ])
+
+    const openWindow = (id) => {
+        // Open Window
+        setWindows(windows.map((window) =>
+            window.id === id ? {...window, isVisible: true} : window
+        ))
+    };
+
     const handleClose = (id) => {
         // Close Window
         setWindows(windows.filter((window) => window.id !== id))
