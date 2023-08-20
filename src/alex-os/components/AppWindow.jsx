@@ -41,6 +41,30 @@ const AppWindow = ({initialData, appId, position, size, isFocused, onClose, onMo
         }
     };
 
+    // Handle Touch Events
+    const handleTouchStart = (e) => {
+        onFocusToggle(appId)
+        setStartDragPosition({x: e.touches[0].clientX, y: e.touches[0].clientY})
+        setIsDragging(true)
+    }
+    const handleTouchEnd = (e) => {
+        setIsDragging(false)
+    }
+
+    const handleTouchMove = (e) => {
+        
+        if (isDragging) {
+            const newX = appState.position.x + (e.touches[0].clientX - startDragPosition.x)
+            const newY = appState.position.y + (e.touches[0].clientY - startDragPosition.y)
+            setAppState({
+                ...appState,
+                position: {x: newX, y: newY}
+            })
+            onMove(appId, newX, newY)
+            setStartDragPosition({x: e.touches[0].clientX, y:e.touches[0].clientY})
+        }
+    }
+
     React.useEffect(() => {
         const handleGlobalMouseUp = () => {
             setIsDragging(false)
@@ -48,9 +72,25 @@ const AppWindow = ({initialData, appId, position, size, isFocused, onClose, onMo
         window.addEventListener('mouseup', handleGlobalMouseUp)
         return () => window.removeEventListener('mouseup', handleGlobalMouseUp)
     }, [])
+    // add event listener to handle e.preventDefault() on touchmove
+    React.useEffect(() => {
+        const windowElement = windowRef.current;
+        if (windowElement) {
+            windowElement.addEventListener('touchstart',handleTouchStart, {passive: false})
+            windowElement.addEventListener('touchend',handleTouchEnd, {passive: false})
+            windowElement.addEventListener('touchmove',handleTouchMove, {passive: false})
+            return () => {
+                windowElement.removeEventListener('touchstart',handleTouchStart)
+                windowElement.removeEventListener('touchend',handleTouchEnd)
+                windowElement.removeEventListener('touchmove',handleTouchMove)
+            }
+        }
+    }, [windowRef.current])
+
 
     return (
         <div
+            ref={windowRef}
             style={{
                 position: 'absolute',
                 top: appState.position.y,
@@ -64,6 +104,9 @@ const AppWindow = ({initialData, appId, position, size, isFocused, onClose, onMo
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
             onMouseMove={handleMouseMove}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            onTouchMove={handleTouchMove}
         >
             <h1 className='window-bar'>Window</h1>
         </div>
