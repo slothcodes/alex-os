@@ -1,6 +1,7 @@
 import React from 'react';
 import WindowManager from './AppWindow';
 import AppWindow from './AppWindow';
+import StartBar from './StartBar';
 import './Desktop.css';
 
 const Desktop = () => {
@@ -12,42 +13,17 @@ const Desktop = () => {
                 ]
     // State To Track Open Windows
     const [windows, setWindows] = React.useState([
-        {id: "Resume", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: true, isVisible: false},
-        {id: "News Reader", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: false, isVisible: false},
-        {id: "Article Writer", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: false, isVisible: false},
-        {id: "About Me", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: false, isVisible: false}
+        {id: "Resume", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: true, isVisible: false, isMinimized: false},
+        {id: "News Reader", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: false, isVisible: false, isMinimized: false},
+        {id: "Article Writer", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: false, isVisible: false, isMinimized: false},
+        {id: "About Me", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: false, isVisible: false, isMinimized: false}
     ])
-    console.log('w',windows);
     const openWindow = (id) => {
-        console.log('id', id, 'window.id', windows[0].id);
         setWindows(windows.map((window) =>{
-            
-            return window.id === id ? {...window, isVisible: true} : window
+            return window.id === id ? {...window, isVisible: true, isMinimized: true} : window
         }))
     };
 
-    const windowComponents = windows.map(({ isVisible, id, position, size, isFocused }) => {
-        console.log('isVisible', isVisible, 'id', id, 'position', position, 'size', size, 'isFocused', isFocused);
-        if (isVisible === true) {
-            return (
-                <AppWindow
-                    key={id}
-                    initialData={currentWindow}
-                    appId={id}
-                    position={position}
-                    size={size}
-                    isFocused={isFocused}
-                    onClose={handleClose}
-                    onMove={handleMove}
-                    onResize={handleResize}
-                    onFocusToggle={handleFocusToggle}
-                />
-            );
-        }
-        
-        return null;
-    });
-    console.log('windowComponents', windowComponents);
     return (
             <div className='desktop'>   
                 {icons.map((icon) => (
@@ -60,8 +36,9 @@ const Desktop = () => {
                         <h3>{icon.windowId}</h3>
                     </div>
                 ))}
-                {windowComponents}
-            <WindowManager windows={windows} setWindows={setWindows}/>    
+
+            <WindowManager windows={windows} setWindows={setWindows}/>   
+            <StartBar windows={windows} onWindowClick={openWindow} menuItemOpen={openWindow}/> 
             </div>
             
 

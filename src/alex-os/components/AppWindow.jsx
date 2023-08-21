@@ -2,7 +2,7 @@ import React from 'react';
 import App from '../../App';
 import ControlBar from './ControlBar';
 
-const AppWindow = ({windows,setWindows, initialData, appId, position, size, isFocused, onClose, onMove, onResize, onFocusToggle}) => {
+const AppWindow = ({windows,setWindows, initialData, appId, position, size, isFocused, onClose, onMin, onMove, onResize, onFocusToggle}) => {
     // Initial Data State
     const [data, setData] = React.useState(initialData)
     // App Specific State
@@ -112,7 +112,7 @@ const AppWindow = ({windows,setWindows, initialData, appId, position, size, isFo
             <ControlBar 
                 onClose={() => onClose(appId)}
                 onMax={() => console.log('max')}
-                onMin={() => console.log('min')}
+                onMin={() => onMin(appId)}
             />
             <h1 className='window-bar'>Window</h1>
         </div>
@@ -122,9 +122,16 @@ const WindowManager = (props) => {
     // set isVisible to false rather than filtering the window from the state
     const handleClose = (id) => {
         props.setWindows(props.windows.map((window) =>{
-            console.log('id', id, 'window.id', props.windows[0].id);
-            return window.id === id ? {...window, isVisible: false} : window
+            return window.id === id ? {...window, isVisible: false, isMinimized: false} : window
         }))
+    };
+
+    const handleMinimize = (id) => {
+        console.log('minimize',id)
+        props.setWindows(props.windows.map((window) =>{       
+                return window.id === id ? {...window, isVisible: !window.isVisible} : window
+            }
+        ))
     };
 
     const handleMove = (id, newX,newY) => {
@@ -144,22 +151,29 @@ const WindowManager = (props) => {
                 return window.id === id ? {...window,isFocused: !window.isFocused} : window
             }));
         };
-    return (
-        <div>
-            {props.windows.map((window) => (
+
+    const windowComponents = props.windows.map(({ isVisible, id, position, size, isFocused }) => {
+        if (isVisible === true) {
+            return (
                 <AppWindow
-                    key={window.id}
-                    initialData={window}
-                    appId={window.id}
-                    position={window.position}
-                    size={window.size}
-                    isFocused={window.isFocused}
+                    key={id}
+                    appId={id}
+                    position={position}
+                    size={size}
+                    isFocused={isFocused}
                     onClose={handleClose}
                     onMove={handleMove}
                     onResize={handleResize}
                     onFocusToggle={handleFocusToggle}
+                    onMin={handleMinimize}
                 />
-            ))}
+            );
+        }    
+        return null;
+    });
+    return (
+        <div>
+            {windowComponents}
         </div>
     );
 }

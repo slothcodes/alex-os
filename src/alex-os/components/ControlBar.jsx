@@ -4,9 +4,9 @@ import React from 'react';
 const ControlBar = ({onClose, onMax, onMin}) => {
     return (
         <div className='control-bar'>
-            <button onClick={onMin}>-</button>
-            <button onClick={onMax}>#</button>
-            <button onClick={onClose}>x</button>
+            <button onClick={onMin} value='min'>-</button>
+            <button onClick={onMax} value='max'>#</button>
+            <button onClick={onClose} value='close'>x</button>
         </div>
     )
 }

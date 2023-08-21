@@ -1,0 +1,27 @@
+.start-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+  }
+  
+  .start-menu {
+    position: absolute;
+    bottom: 50px; /* Adjust based on the height of the start bar */
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+  }
+  
+  .menu-group {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+  } 
+
+  .minimized-windows button {
+    margin: 0 5px;
+  }
+  
