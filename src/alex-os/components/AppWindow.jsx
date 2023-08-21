@@ -2,7 +2,7 @@ import React from 'react';
 import App from '../../App';
 import ControlBar from './ControlBar';
 
-const AppWindow = ({initialData, appId, position, size, isFocused, onClose, onMove, onResize, onFocusToggle}) => {
+const AppWindow = ({windows,setWindows, initialData, appId, position, size, isFocused, onClose, onMove, onResize, onFocusToggle}) => {
     // Initial Data State
     const [data, setData] = React.useState(initialData)
     // App Specific State
@@ -118,49 +118,35 @@ const AppWindow = ({initialData, appId, position, size, isFocused, onClose, onMo
         </div>
     )}
 
-const WindowManager = () => {
-    // State To Track Open Windows
-    const [windows, setWindows] = React.useState([
-        {id: "test", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: true, isVisible: false},
-        {id: "newsReader", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: false, isVisible: false},
-    ])
-
-    const openWindow = (id) => {
-        // Open Window
-        setWindows(windows.map((window) =>
-            window.id === id ? {...window, isVisible: true} : window
-        ))
-    };
-
+const WindowManager = (props) => {
+    // set isVisible to false rather than filtering the window from the state
     const handleClose = (id) => {
-        // Close Window
-        setWindows(windows.filter((window) => window.id !== id))
+        props.setWindows(props.windows.map((window) =>{
+            console.log('id', id, 'window.id', props.windows[0].id);
+            return window.id === id ? {...window, isVisible: false} : window
+        }))
     };
 
     const handleMove = (id, newX,newY) => {
-        // Move Window
-        setWindows(windows.map((window) => 
+        props.setWindows(props.windows.map((window) => 
                 window.id === id ? {...window,position: {x: newX, y: newY}} : window
             ));
         
 
         };
     const handleResize = (id, newWidth,newHeight) => {
-        // Resize Window
-        setWindows(windows.map((window) => {
+        props.setWindows(props.windows.map((window) => {
                 return window.id === id ? {...window,size: {width: newWidth, height: newHeight}} : window
             }));
         };
     const handleFocusToggle = (id) => {
-        // Toggle Focus
-        setWindows(windows.map((window) => {
+        props.setWindows(props.windows.map((window) => {
                 return window.id === id ? {...window,isFocused: !window.isFocused} : window
             }));
         };
     return (
         <div>
-            {windows.map((window) => (
-                console.log(window),
+            {props.windows.map((window) => (
                 <AppWindow
                     key={window.id}
                     initialData={window}
