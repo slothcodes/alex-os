@@ -26,6 +26,7 @@ const Desktop = () => {
     };
 
     return (
+        <>
             <div className='desktop'>   
                 {icons.map((icon) => (
                     <div className='desktop-icon' key={icon.windowId}>
@@ -39,8 +40,9 @@ const Desktop = () => {
                 ))}
 
             <WindowManager windows={windows} setWindows={setWindows}/>   
-            <StartBar windows={windows} onWindowClick={openWindow} menuItemOpen={openWindow}/> 
             </div>
+            <StartBar windows={windows} onWindowClick={openWindow} menuItemOpen={openWindow}/> 
+        </>
             
 
 )};
