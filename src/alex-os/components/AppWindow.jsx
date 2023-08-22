@@ -39,7 +39,7 @@ const AppWindow = (props) => {
             const newY = appState.position.y + (e.clientY - startDragPosition.y)
             // update local state
             setAppState({...appState, position: {x: newX, y: newY}})
-            onMove(appId, newX, newY)
+            props.onMove(props.appId, newX, newY)
             setStartDragPosition({x: e.clientX, y: e.clientY})
         }
     };
@@ -102,8 +102,8 @@ const AppWindow = (props) => {
                 position: 'absolute',
                 top: appState.position.y,
                 left: appState.position.x,
-                width: appState.size.width,
-                height: appState.size.height,
+                minWidth: appState.size.width,
+                minHeight: appState.size.height,
                 zIndex: appState.isFocused ? 1 : 0,
                 backgroundColor: appState.isFocused ? 'white' : 'lightgray',
                 border: '1px solid black',
@@ -144,7 +144,7 @@ const WindowManager = (props) => {
         // setIsMaximized(!isMaximized);
         console.log('maximize',props.windows)
         props.setWindows(props.windows.map((window) => {
-            return window.id === appId ? {...window, isMaximized: !window.isMaximized} : window
+            return window.id === appId ? {...window, isMaximized: !window.isMaximized} : window//, size:{x: 400, y:400}} : window
         }))
     };
 
