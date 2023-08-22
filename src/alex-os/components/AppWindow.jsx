@@ -2,7 +2,7 @@ import React from 'react';
 import App from '../../App';
 import ControlBar from './ControlBar';
 
-const AppWindow = ({windows,setWindows, initialData, appId, position, size, isFocused, onClose, onMin, onMove, onResize, onFocusToggle}) => {
+const AppWindow = ({windows,content,setWindows, initialData, appId, position, size, isFocused, onClose, onMin, onMove, onResize, onFocusToggle}) => {
     // Initial Data State
     const [data, setData] = React.useState(initialData)
     // App Specific State
@@ -20,7 +20,7 @@ const AppWindow = ({windows,setWindows, initialData, appId, position, size, isFo
         // Focus Window
         onFocusToggle(appId)
         // Set Dragging State
-        if (e.target.className === 'window-bar') {
+        if (e.target.className === 'control-bar') {
             setStartDragPosition({x: e.clientX, y: e.clientY})
             setIsDragging(true)
         }
@@ -114,7 +114,7 @@ const AppWindow = ({windows,setWindows, initialData, appId, position, size, isFo
                 onMax={() => console.log('max')}
                 onMin={() => onMin(appId)}
             />
-            <h1 className='window-bar'>Window</h1>
+            {content}
         </div>
     )}
 
@@ -152,12 +152,13 @@ const WindowManager = (props) => {
             }));
         };
 
-    const windowComponents = props.windows.map(({ isVisible, id, position, size, isFocused }) => {
+    const windowComponents = props.windows.map(({ isVisible, content, id, position, size, isFocused }) => {
         if (isVisible === true) {
             return (
                 <AppWindow
                     key={id}
                     appId={id}
+                    content={content}
                     position={position}
                     size={size}
                     isFocused={isFocused}

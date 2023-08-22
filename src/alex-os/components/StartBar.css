@@ -1,6 +1,9 @@
 .start-bar {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: auto auto;
+    grid-gap: 10px; /* Adjust as needed */
     align-items: center;
     background-color: #333;
     color: white;
@@ -9,13 +12,25 @@
   
   .start-menu {
     position: absolute;
-    bottom: 50px; /* Adjust based on the height of the start bar */
+    bottom: 100%; /* This will position the menu right above the start button */
+    left: 0; /* Aligns the menu to the left edge of the start bar */
+    z-index: 10; /* Ensures the menu is above other elements */
+    grid-column: 1; /* Position it in the first column */
+    grid-row: 1; /* Span it across 3 rows */
+    /* bottom: 125px; Adjust based on the height of the start bar */
     background-color: white;
     color: black;
     border: 1px solid #ccc;
+    z-index: 2;
+  }
+
+  .start-button {
+    /* grid-column: 1; */
+    grid-row: 1;
   }
   
   .menu-group {
+
     display: flex;
     flex-direction: column;
     padding: 5px;

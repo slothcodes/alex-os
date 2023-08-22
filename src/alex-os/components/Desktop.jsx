@@ -2,6 +2,7 @@ import React from 'react';
 import WindowManager from './AppWindow';
 import AppWindow from './AppWindow';
 import StartBar from './StartBar';
+import ResumeWindow from './ResumeWindow';
 import './Desktop.css';
 
 const Desktop = () => {
@@ -13,10 +14,10 @@ const Desktop = () => {
                 ]
     // State To Track Open Windows
     const [windows, setWindows] = React.useState([
-        {id: "Resume", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: true, isVisible: false, isMinimized: false},
-        {id: "News Reader", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: false, isVisible: false, isMinimized: false},
-        {id: "Article Writer", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: false, isVisible: false, isMinimized: false},
-        {id: "About Me", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: false, isVisible: false, isMinimized: false}
+        {id: "Resume", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: true, isVisible: false, isMinimized: false, content:<ResumeWindow/>},
+        {id: "News Reader", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: false, isVisible: false, isMinimized: false, content:'window2'},
+        {id: "Article Writer", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: false, isVisible: false, isMinimized: false, content:'window3'},
+        {id: "About Me", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: false, isVisible: false, isMinimized: false, content:'window4'}
     ])
     const openWindow = (id) => {
         setWindows(windows.map((window) =>{
