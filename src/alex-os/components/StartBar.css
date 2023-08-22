@@ -5,7 +5,7 @@
     grid-template-rows: auto auto;
     grid-gap: 10px; /* Adjust as needed */
     align-items: center;
-    background-color: #333;
+    background-color: #35475c;
     color: white;
     padding: 10px;
   }
@@ -27,6 +27,8 @@
   .start-button {
     /* grid-column: 1; */
     grid-row: 1;
+    width: 5rem;
+    padding: 0.5rem 1rem;
   }
   
   .menu-group {

@@ -1,15 +1,17 @@
 import React from 'react';
 import App from '../../App';
 import ControlBar from './ControlBar';
+import './AppWindow.css';
 
-const AppWindow = ({windows,content,setWindows, initialData, appId, position, size, isFocused, onClose, onMin, onMove, onResize, onFocusToggle}) => {
+const AppWindow = (props) => {
     // Initial Data State
-    const [data, setData] = React.useState(initialData)
+    console.log('props',props)
+    const [data, setData] = React.useState(props.initialData)
     // App Specific State
     const [appState, setAppState] = React.useState({
-        isFocused: isFocused,
-        position: position,
-        size: size
+        isFocused: props.isFocused,
+        position: props.position,
+        size: props.size
     })
     const windowRef = React.useRef(null)
     const [isDragging, setIsDragging] = React.useState(false)
@@ -18,7 +20,7 @@ const AppWindow = ({windows,content,setWindows, initialData, appId, position, si
     // Handle Mouse Click
     const handleMouseDown = (e) => {
         // Focus Window
-        onFocusToggle(appId)
+        props.onFocusToggle(props.appId)
         // Set Dragging State
         if (e.target.className === 'control-bar') {
             setStartDragPosition({x: e.clientX, y: e.clientY})
@@ -66,6 +68,9 @@ const AppWindow = ({windows,content,setWindows, initialData, appId, position, si
         }
     }
 
+    const windowClass = props.isMaximized ? 'window-maximized' : 'window-default';
+    console.log('windowClass',windowClass)
+
     React.useEffect(() => {
         const handleGlobalMouseUp = () => {
             setIsDragging(false)
@@ -91,6 +96,7 @@ const AppWindow = ({windows,content,setWindows, initialData, appId, position, si
 
     return (
         <div
+            className={windowClass}
             ref={windowRef}
             style={{
                 position: 'absolute',
@@ -110,11 +116,11 @@ const AppWindow = ({windows,content,setWindows, initialData, appId, position, si
             onTouchMove={handleTouchMove}
         >
             <ControlBar 
-                onClose={() => onClose(appId)}
-                onMax={() => console.log('max')}
-                onMin={() => onMin(appId)}
+                onClose={() => props.onClose(props.appId)}
+                onMax={() => props.onMax(props.appId)}
+                onMin={() => props.onMin(props.appId)}
             />
-            {content}
+            {props.content}
         </div>
     )}
 
@@ -132,6 +138,14 @@ const WindowManager = (props) => {
                 return window.id === id ? {...window, isVisible: !window.isVisible} : window
             }
         ))
+    };
+
+    const handleMaximize = (appId) => {
+        // setIsMaximized(!isMaximized);
+        console.log('maximize',props.windows)
+        props.setWindows(props.windows.map((window) => {
+            return window.id === appId ? {...window, isMaximized: !window.isMaximized} : window
+        }))
     };
 
     const handleMove = (id, newX,newY) => {
@@ -152,21 +166,23 @@ const WindowManager = (props) => {
             }));
         };
 
-    const windowComponents = props.windows.map(({ isVisible, content, id, position, size, isFocused }) => {
-        if (isVisible === true) {
+    const windowComponents = props.windows.map((window) => {
+        if (window.isVisible === true) {
             return (
                 <AppWindow
-                    key={id}
-                    appId={id}
-                    content={content}
-                    position={position}
-                    size={size}
-                    isFocused={isFocused}
+                    key={window.id}
+                    appId={window.id}
+                    content={window.content}
+                    position={window.position}
+                    size={window.size}
+                    isFocused={window.isFocused}
+                    isMaximized={window.isMaximized}
                     onClose={handleClose}
                     onMove={handleMove}
                     onResize={handleResize}
                     onFocusToggle={handleFocusToggle}
                     onMin={handleMinimize}
+                    onMax={handleMaximize}
                 />
             );
         }    

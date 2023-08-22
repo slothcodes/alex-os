@@ -1,9 +1,11 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, useRef} from "react";
 import './StartBar.css';
 
 const StartBar = ({windows, onWindowClick, menuItemOpen}) => {
     const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString());
-    const [isMenuOpen, setInMenuOpen] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const startMenuRef = useRef(null);
+    const startButtonRef = useRef(null);
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -13,23 +15,36 @@ const StartBar = ({windows, onWindowClick, menuItemOpen}) => {
         return () => clearInterval(timer);
     }, []);
     const handleButtonClick = () => {
-        setInMenuOpen(!isMenuOpen)
+        setIsMenuOpen(!isMenuOpen)
     };
-
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (startMenuRef.current && !startMenuRef.current.contains(event.target) && !startButtonRef.current.contains(event.target)) {
+                setIsMenuOpen(false);
+            }
+        }
+    
+        document.addEventListener("mousedown", handleClickOutside);
+    
+        // Cleanup the event listener on component unmount
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
     return (
         <div className="start-bar">
             { isMenuOpen && (
-                <div className="start-menu">
+                <div className="start-menu" ref={startMenuRef}>
                     <ul className="menu-group">
                         <a href="https://github.com/slothcodes" target="blank"><img src="../public/icons8-github-48.svg" alt="Github"/>GitHub</a>
                         <a href="https://www.linkedin.com/" target="blank"><img src="../public/icons8-linkedin-48.svg" alt="LinkedIn"/>LinkedIn</a>
-                        <button onClick={()=> menuItemOpen('Article Writer')}><img src="../public/icons8-typewriter-40.png" alt="Article Writer"/>Article Writer</button>
-                        <button onClick={()=> menuItemOpen('News Reader')}> <img src="../public/icons8-newspaper-48.png" alt="News Reader"/>News Reader</button>
+                        <button onClick={()=> {menuItemOpen('Article Writer'), setIsMenuOpen(false)}}><img src="../public/icons8-typewriter-40.png" alt="Article Writer"/>Article Writer</button>
+                        <button onClick={()=> {menuItemOpen('News Reader'), setIsMenuOpen(false)}}> <img src="../public/icons8-newspaper-48.png" alt="News Reader"/>News Reader</button>
                     </ul>
                     
                 </div>
             )}
-            <button className="start-button" onClick={handleButtonClick}>Start</button>
+            <button className="start-button" ref={startButtonRef} onClick={handleButtonClick}>Start</button>
             <div className="minimized-windows">
                 {windows.map((window) => (
                     window.isMinimized && <button
