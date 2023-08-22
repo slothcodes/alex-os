@@ -13,18 +13,20 @@ const Desktop = () => {
                    {src: '../public/icons8-typewriter-40.png', windowId: 'Article Writer'}
                 ]
     // State To Track Open Windows
+    const getInitialWindowPosition = (window.innerWidth - 800) / 2;
     const [windows, setWindows] = React.useState([
-        {id: "Resume", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: true, isVisible: false, isMinimized: false, isMaximized:false, content:<ResumeWindow/>},
-        {id: "News Reader", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: false, isVisible: false, isMinimized: false, isMaximized:false, content:'window2'},
-        {id: "Article Writer", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: false, isVisible: false, isMinimized: false, isMaximized:false, content:'window3'},
-        {id: "About Me", position: {x: 0, y: 0}, size: {width: 200, height: 200}, isFocused: false, isVisible: false, isMinimized: false, isMaximized:false, content:'window4'}
+        {id: "Resume", position: {x: getInitialWindowPosition, y: 0}, size: {width: 800, height: 800}, isFocused: false, isVisible: false, isMinimized: false, zIndex: 0, content:<ResumeWindow/>},
+        {id: "News Reader", position: {x: getInitialWindowPosition, y: 0}, size: {width: 800, height: 800}, isFocused: false, isVisible: false, isMinimized: false, zIndex: 0, content:'window2'},
+        {id: "Article Writer", position: {x: getInitialWindowPosition, y: 0}, size: {width: 800, height: 800}, isFocused: false, isVisible: false, isMinimized: false, zIndex: 0, content:'window3'},
+        {id: "About Me", position: {x: getInitialWindowPosition, y: 0}, size: {width: 800, height: 800}, isFocused: false, isVisible: false, isMinimized: false, zIndex: 0, content:'window4'}
     ])
+    const [zIndexCounter, setZIndexCounter] = React.useState(0);
     const openWindow = (id) => {
         setWindows(windows.map((window) =>{
-            return window.id === id ? {...window, isVisible: true, isMinimized: true} : window
+            return window.id === id ? {...window, isVisible: true, isMinimized: true, isFocused:true, zIndex:1} : {...window, isFocused: false, zIndex: 0}
         }))
     };
-
+    console.log('desktop state', windows)
     return (
         <>
             <div className='desktop'>   
