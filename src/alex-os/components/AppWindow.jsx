@@ -72,14 +72,12 @@ const AppWindow = (props) => {
     }, [windowRef.current]);
 
     return (
-        <div
+        <div className='window'
             ref={windowRef}
             style={{
                 position: 'absolute',
                 top: props.position.y,
                 left: props.position.x,
-                minWidth: props.size.width,
-                minHeight: props.size.height,
                 zIndex: props.zIndex,
                 backgroundColor: props.isFocused ? 'white' : 'lightgray',
                 border: '1px solid black',
