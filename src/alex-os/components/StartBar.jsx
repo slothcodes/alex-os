@@ -1,4 +1,7 @@
 import React, { useState, useEffect, useRef} from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { minimizeWindow } from "../../actions/windowActions";
+import { getWindows } from '../../selectors/windowSelectors';
 import './StartBar.css';
 
 const StartBar = ({windows, onWindowClick, menuItemOpen}) => {
@@ -6,6 +9,10 @@ const StartBar = ({windows, onWindowClick, menuItemOpen}) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const startMenuRef = useRef(null);
     const startButtonRef = useRef(null);
+    const dispatch = useDispatch();
+
+    // get list of minimized windows
+    const openWindowsList = useSelector(getWindows);
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -46,10 +53,10 @@ const StartBar = ({windows, onWindowClick, menuItemOpen}) => {
             )}
             <button className="start-button" ref={startButtonRef} onClick={handleButtonClick}>Start</button>
             <div className="minimized-windows">
-                {windows.map((window) => (
+                {openWindowsList.map((window) => (
                     window.isMinimized && <button
                         key={window.id}
-                        onClick={() => onWindowClick(window.id)}
+                        onClick={() => dispatch(minimizeWindow(window.id))}
                     >
                         {window.id}
                     </button>
