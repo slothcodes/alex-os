@@ -1,7 +1,4 @@
-body {
-  display: flex;
-  flex-direction: column; /* Stack children vertically */
-  height: 100vh; /* Full viewport height */
-  margin: 0; /* Remove default margins */
-  overflow: hidden; /* Prevent scroll on the body */
+#root {
+  width: 100vw;
+  overflow: hidden;
 }

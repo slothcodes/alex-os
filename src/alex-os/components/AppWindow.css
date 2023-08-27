@@ -2,9 +2,17 @@
     width: 10rem;
     height: 10rem;
     color: red;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    border: 1px solid black;
 }
 
 .maximized {
+    bottom: var(--start-bar-height);
     width: 100%;
-    height: 100%;
+    height: 95%;
+    padding: 0px;
+    margin: 0px;
+    border: 0px solid black;
 }

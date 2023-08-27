@@ -5,15 +5,14 @@ import { openWindow, closeWindow, moveWindow } from '../../actions/windowActions
 import StartBar from './StartBar';
 import './AppWindow.css';
 
-const AppWindow = (props) => {
+const AppWindow = React.forwardRef((props,ref) => {
     const handleWindowFocus = (e) => {
         props.onFocusToggle(props.appId);
     };
-    const windowRef = React.useRef(props.id);
     console.log('ismax',props.isMaximized)
     return (
         <div className= {`window ${props.isMaximized ? 'maximized' : ''}`}
-            ref={windowRef}
+            ref={ref}
             onMouseDown={handleWindowFocus}
             onTouchStart={handleWindowFocus}
             style={{
@@ -22,18 +21,24 @@ const AppWindow = (props) => {
                 left: props.position.x,
                 zIndex: props.zIndex,
                 backgroundColor: props.isFocused ? 'white' : 'lightgray',
-                border: '1px solid black',
+                // border: '1px solid black',
             }}
             data-app-id={props.appId}  // Important to identify the window
         >
-            <ControlBar 
+            <div className='windowControlBar'>
+                <ControlBar 
                 onClose={() => props.onClose(props.appId)}
                 onMax={() => props.onMax(props.appId)}
                 onMin={() => props.onMin(props.appId)}
-            />
-            {props.content}
+                />
+            </div>
+            
+            <div className='windowContent'>
+                {props.content}
+            </div>
+            
         </div>
     );
-};
+});
 
 export default AppWindow;

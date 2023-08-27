@@ -1,8 +1,17 @@
 .desktop {
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between;
   background: linear-gradient(45deg, rgb(52, 31, 103), rgb(225, 78, 193));
   flex: 1; /* Allow the desktop to grow and take up all available space 
   overflow: auto; /* Add scroll if the content inside desktop overflows*/
   z-index: 0; /* Make sure the desktop is behind the taskbar */
+  position: 'absolute';
+  bottom: '5vh'; 
+  overflow: 'hidden';
+  height: 100%;
+  width: 100%;
+  
 }
 
 .desktop-icon{

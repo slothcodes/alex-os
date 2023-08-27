@@ -47,7 +47,7 @@ export const windowReducer = (state = initialState, action) => {
             updatedWindows = state.windows.map(window => {
                 if (window.id === action.payload) {
                     console.log('maximizing window', window)
-                    return { ...window, isMaximized: !window.isMaximized };
+                    return { ...window, isMaximized: !window.isMaximized, position: {x: 0, y: 0} };
                 }
                 return window;
             });

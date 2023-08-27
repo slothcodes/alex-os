@@ -2,14 +2,19 @@ import React, { useState, useEffect, useRef} from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { minimizeWindow } from "../../actions/windowActions";
 import { getWindows } from '../../selectors/windowSelectors';
+import GitHubIcon from '../../assets/icons8-github-48.svg';
+import LinkedInIcon from '../../assets/icons8-linkedin-48.svg';
+import ArticleWriterIcon from '../../assets/icons8-typewriter-40.png';
+import NewsReaderIcon from '../../assets/icons8-newspaper-48.png';
 import './StartBar.css';
 
-const StartBar = ({windows, onWindowClick, menuItemOpen}) => {
+const StartBar =  React.forwardRef(({startBarHeight,onHeightChange,menuItemOpen},ref) => {
     const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString());
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const startMenuRef = useRef(null);
     const startButtonRef = useRef(null);
     const dispatch = useDispatch();
+    const startBarRef = useRef(null);
 
     // get list of minimized windows
     const openWindowsList = useSelector(getWindows);
@@ -38,15 +43,22 @@ const StartBar = ({windows, onWindowClick, menuItemOpen}) => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);
+
+    React.useEffect(() => {
+        if (startBarRef.current) {
+            onHeightChange(startBarRef.current ? startBarRef.current.offsetHeight : 0);
+        }
+    }, []);
+
     return (
-        <div className="start-bar">
+        <div className="start-bar" ref={ref}>
             { isMenuOpen && (
                 <div className="start-menu" ref={startMenuRef}>
                     <ul className="menu-group">
-                        <a href="https://github.com/slothcodes" target="blank"><img src="../public/icons8-github-48.svg" alt="Github"/>GitHub</a>
-                        <a href="https://www.linkedin.com/" target="blank"><img src="../public/icons8-linkedin-48.svg" alt="LinkedIn"/>LinkedIn</a>
-                        <button onClick={()=> {menuItemOpen('Article Writer'), setIsMenuOpen(false)}}><img src="../public/icons8-typewriter-40.png" alt="Article Writer"/>Article Writer</button>
-                        <button onClick={()=> {menuItemOpen('News Reader'), setIsMenuOpen(false)}}> <img src="../public/icons8-newspaper-48.png" alt="News Reader"/>News Reader</button>
+                        <a href="https://github.com/slothcodes" target="blank"><img src={GitHubIcon} alt="Github"/>GitHub</a>
+                        <a href="https://www.linkedin.com/" target="blank"><img src={LinkedInIcon} alt="LinkedIn"/>LinkedIn</a>
+                        <button onClick={()=> {menuItemOpen('Article Writer'), setIsMenuOpen(false)}}><img src={ArticleWriterIcon} alt="Article Writer"/>Article Writer</button>
+                        <button onClick={()=> {menuItemOpen('News Reader'), setIsMenuOpen(false)}}> <img src={NewsReaderIcon} alt="News Reader"/>News Reader</button>
                     </ul>
                     
                 </div>
@@ -65,7 +77,7 @@ const StartBar = ({windows, onWindowClick, menuItemOpen}) => {
             <div className="time">{currentTime}</div>
         </div>
     )
-}
+})
 
 export default StartBar;
     
