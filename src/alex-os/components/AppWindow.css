@@ -1,18 +1,48 @@
 .window {
-    width: 10rem;
-    height: 10rem;
-    color: red;
+    width: 30rem;
+    height: 29rem;
+    color: black;
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
     border: 1px solid black;
 }
 
+.windowContent {
+    background-color: rgb(172, 170, 170);
+    /* max-height: calc(100% - 3rem); 2rem is the height of the title bar */
+    height: 93%;
+    /* overflow-y: auto; */
+}
+
+
 .maximized {
     bottom: var(--start-bar-height);
     width: 100%;
-    height: 95%;
+    height: 90vh;
     padding: 0px;
     margin: 0px;
     border: 0px solid black;
+}
+
+
+.no-select {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Supported by Chrome, Opera and Firefox */
+}
+
+@media screen and (min-width: 600px) {
+    .windowContent {
+        height: 90%;
+    }
 }

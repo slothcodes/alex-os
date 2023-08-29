@@ -11,9 +11,10 @@ export const windowReducer = (state = initialState, action) => {
     let updatedWindows;
     switch (action.type) {
         case OPEN_WINDOW:
+            console.log('opening window', action.startingX, action.startingY)
             updatedWindows = state.windows.map(window => {
                 if (window.id === action.payload) {
-                    const newWindow = { ...window, isVisible: true, isMinimized: true };
+                    const newWindow = { ...window, isVisible: true, isMinimized: true, position: {x: action.startingX, y: action.startingY,isMaximized: action.mobileView ? true: false } };
                     console.log('new window', newWindow)
                     return newWindow;
                 }

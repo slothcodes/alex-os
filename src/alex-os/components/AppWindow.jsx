@@ -10,6 +10,9 @@ const AppWindow = React.forwardRef((props,ref) => {
         props.onFocusToggle(props.appId);
     };
     console.log('ismax',props.isMaximized)
+    console.log('mobileView',props.mobileView)
+    const top = props.isMaximized ? 0 : props.position.y;
+    const left = props.isMaximized ? 0 : props.position.x;
     return (
         <div className= {`window ${props.isMaximized ? 'maximized' : ''}`}
             ref={ref}
@@ -17,8 +20,8 @@ const AppWindow = React.forwardRef((props,ref) => {
             onTouchStart={handleWindowFocus}
             style={{
                 position: 'absolute',
-                top: props.position.y,
-                left: props.position.x,
+                top: top,//props.position.y,
+                left: left, //props.position.x,
                 zIndex: props.zIndex,
                 backgroundColor: props.isFocused ? 'white' : 'lightgray',
                 // border: '1px solid black',
@@ -30,6 +33,7 @@ const AppWindow = React.forwardRef((props,ref) => {
                 onClose={() => props.onClose(props.appId)}
                 onMax={() => props.onMax(props.appId)}
                 onMin={() => props.onMin(props.appId)}
+                mobileView={props.mobileView}
                 />
             </div>
             

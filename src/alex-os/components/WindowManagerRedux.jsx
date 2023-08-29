@@ -7,13 +7,14 @@ import { openWindow,closeWindow, focusWindow, moveWindow, minimizeWindow, maximi
 import './AppWindow.css';
 import AppWindow from './AppWindow';
 import { current } from '@reduxjs/toolkit';
+import ResumeWindow from './ResumeWindow';
 
 const WindowManager = (props) => {         
     const dispatch = useDispatch();
     const windowRef = useRef(null);
     const windows = useSelector(getWindows);
     console.log('windows', windows);
-
+    console.log('windowManagerMobile', props.mobileView)
     const handleMove = (id, newX, newY) => {
             console.log('handleMove to new pos', newX, newY);
             dispatch(moveWindow(id, newX, newY)); 
@@ -39,6 +40,15 @@ const WindowManager = (props) => {
     const [isDragging, setIsDragging] = React.useState(false);
     const [draggedWindowId, setDraggedWindowId] = React.useState(null);
 
+    const handleSetIsDragging = (isDraggingBool) => {
+        if (props.isMaximized) {
+            setIsDragging(false);
+        } else {
+            setIsDragging(isDraggingBool);
+        }
+        
+    };
+
     const handleMouseDown = (e) => {
         if (e.target && e.target.dataset) {
                 const closestElement = e.target.closest("[data-app-id]");
@@ -48,7 +58,7 @@ const WindowManager = (props) => {
                 handleFocusToggle(windowId)
                 if (e.target.className === 'control-bar') {
                     console.log('mouse down function fired')
-                    setIsDragging(true);
+                    handleSetIsDragging(true);
                     setDraggedWindowId(windowId);
                     lastMousePosition.current = { x: e.clientX, y: e.clientY };
                     }
@@ -58,7 +68,7 @@ const WindowManager = (props) => {
     };
 
     const handleMouseUp = () => {
-        setIsDragging(false);
+        handleSetIsDragging(false);
         setDraggedWindowId(null);
     };
 
@@ -99,7 +109,7 @@ const WindowManager = (props) => {
     const handleTouchStart = (e) => {
         const windowId = e.target.closest("[data-app-id]").dataset.appId;
         if (e.target.className === 'control-bar') {
-            setIsDragging(true);
+            handleSetIsDragging(true);
             setDraggedWindowId(windowId);
             console.log('e.clientX', e.touches[0].clientX, 'e.clientY', e.touches[0].clientY)
             lastMousePosition.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
@@ -107,7 +117,7 @@ const WindowManager = (props) => {
     };
 
     const handleTouchEnd = () => {
-        setIsDragging(false);
+        handleSetIsDragging(false);
         setDraggedWindowId(null);
     };
 
@@ -169,13 +179,29 @@ const WindowManager = (props) => {
 
     React.useEffect(() => {
         const handleGlobalMouseUp = () => {
-            setIsDragging(false);
+            handleSetIsDragging(false);
         };
         window.addEventListener('mouseup', handleGlobalMouseUp);
         return () => {
             window.removeEventListener('mouseup', handleGlobalMouseUp);
         };
     }, []);
+
+    const lookUpContent = (id) => {
+        switch (id) {
+            case 'About Me':
+                return 'About Me';
+            case 'Resume':
+                return <ResumeWindow/>;
+            case 'News Reader':
+                return 'News Reader';
+            case 'Article Writer':
+                return 'Article Writer';
+            default:
+                return 'No Content';
+        } 
+    };
+
     console.log('windows', windows);
     const windowRefs = useRef(new Map()) //windows.map(window => React.createRef())) //.current;
     const windowComponents = windows.map((window) => {
@@ -187,12 +213,13 @@ const WindowManager = (props) => {
             return (
                 <AppWindow
                     ref={windowRefs.current.get(window.id)}
+                    mobileView = {props.mobileView}
                     key={window.id}
                     appId={window.id}
-                    content={window.content}
+                    content={lookUpContent(window.id)}
                     position={window.position}
                     isFocused={window.isFocused}
-                    isMaximized={window.isMaximized}
+                    isMaximized={props.mobileView ? true: window.isMaximized}
                     onFocusToggle={handleFocusToggle}
                     zIndex={window.zIndex}
                     onClose={handleClose}

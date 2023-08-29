@@ -5,9 +5,13 @@ export const MAXIMIZE_WINDOW = 'MAXIMIZE_WINDOW';
 export const FOCUS_WINDOW = 'FOCUS_WINDOW';
 export const MOVE_WINDOW = 'MOVE_WINDOW';
 
-export const openWindow = (windowId) => ({
+export const openWindow = (windowId,startingX,startingY,mobileView) => ({
     type: OPEN_WINDOW,
-    payload: windowId
+    payload: windowId,
+    startingX: startingX,
+    startingY: startingY,
+    mobileView: mobileView
+
 });
 
 export const closeWindow = (windowId) => ({
