@@ -7,4 +7,9 @@ export default defineConfig({
   define: {
     global: 'window',
   },
+  server: {
+      proxy: {
+        '/getNews': 'http://localhost:5001',
+      },
+    }
 })

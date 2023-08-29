@@ -9,9 +9,9 @@
 }
 
 .windowContent {
-    background-color: rgb(172, 170, 170);
+    background-color: snow;
     /* max-height: calc(100% - 3rem); 2rem is the height of the title bar */
-    height: 93%;
+    height: 97%;
     /* overflow-y: auto; */
 }
 
@@ -43,6 +43,6 @@
 
 @media screen and (min-width: 600px) {
     .windowContent {
-        height: 90%;
+        height: 97%;
     }
 }

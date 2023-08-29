@@ -7,7 +7,7 @@ body, h1, h2, h3, ul, p {
   /* Define the "window" for the resume */
   .resume {
     max-width: 100%; /* Take the full width of the "window" */
-    max-height: 100%; /* Set a maximum height for the "window" */
+    max-height: 95%; /* Set a maximum height for the "window" */
     overflow-y: auto; /* Add scrollbar if content exceeds the height */
     border: 1px solid #2D2D2D;
     padding: 20px;

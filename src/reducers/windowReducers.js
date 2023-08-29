@@ -4,6 +4,7 @@ const initialState = {
     windows: [
         {id: "Resume", position: {x: 100, y: 0}, isFocused: false, isVisible: true, isMinimized: false, isMaximized: false, zIndex: 2, content:"ResumeWindow"},
         {id: "News Reader", position: {x: 0, y: 0}, isFocused: false, isVisible: true, isMinimized: false, isMaximized: false, zIndex: 2, content:'window2'},
+        {id: "React Projects", position: {x: 0, y: 0}, isFocused: false, isVisible: true, isMinimized: false, isMaximized: false, zIndex: 2, content:'React Projects'},
     ]
 };
 

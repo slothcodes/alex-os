@@ -10,6 +10,7 @@ import AboutMeIcon from '../../assets/file48.svg';
 import ResumeIcon from '../../assets/icons8-resume-48.png';
 import NewsReaderIcon from '../../assets/icons8-newspaper-48.png';
 import ArticleWriterIcon from '../../assets/icons8-typewriter-40.png';
+import ReactProjectIcon from '../../assets/icons8-physics-book-48.png';
 
 
 let startingX = 0;
@@ -45,7 +46,8 @@ const Desktop = (props) => {
         {src: AboutMeIcon, windowId: 'About Me'},
         {src: ResumeIcon, windowId: 'Resume'},
         {src: NewsReaderIcon, windowId: 'News Reader'},
-        {src: ArticleWriterIcon, windowId: 'Article Writer'}
+        {src: ArticleWriterIcon, windowId: 'Article Writer'},
+        {src: ReactProjectIcon, windowId: 'React Projects'}
     ];
     const startBarHeight = startBarRef.current ? startBarRef.current.offsetHeight : 0;
     // set starting position for windows
