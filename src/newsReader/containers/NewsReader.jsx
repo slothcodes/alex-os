@@ -6,7 +6,7 @@ const NewsReader = () => {
     const [stories, setStories] = React.useState({'sports':[],'news':[],'gaming':[],'tech':[]});
     const [loading, setLoading] = React.useState(true);
     const [activeStories, setActiveStories] = React.useState([]); 
-    const [category, setCategory] = React.useState('');
+    const [category, setCategory] = React.useState(1);
     const [sliceLength, setSliceLength] = React.useState(25);
     
     // fetch news stories on load
@@ -17,8 +17,9 @@ const NewsReader = () => {
                 const data = await response.json();
                 setStories(data.results);
                 setCategory('1');
-                setLoading(false);
                 getCategory();
+                setLoading(false);
+                
             } catch (error) {
                 console.error('Error fetching news:', error);
             }

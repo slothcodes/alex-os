@@ -9,6 +9,8 @@ import AppWindow from './AppWindow';
 import { current } from '@reduxjs/toolkit';
 import ResumeWindow from './ResumeWindow';
 import ProjectWindow from './projectsWindow/ProjectWindow.jsx';
+import NewsReader from '../../newsReader/containers/NewsReader';
+import ArticleWriterMain from '../../articleWriter/ArticleWriterApp';
 
 const WindowManager = (props) => {         
     const dispatch = useDispatch();
@@ -195,9 +197,9 @@ const WindowManager = (props) => {
             case 'Resume':
                 return <ResumeWindow/>;
             case 'News Reader':
-                return 'News Reader';
+                return <NewsReader/>;
             case 'Article Writer':
-                return 'Article Writer';
+                return <ArticleWriterMain/>;
             case 'React Projects':
                 return <ProjectWindow/>;
             default:
