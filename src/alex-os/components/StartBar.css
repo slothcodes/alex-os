@@ -4,12 +4,12 @@
 
 .start-bar {
     height: var(--start-bar-height);
-    display: grid;
+    display: flex;
     position: relative;
-    grid-template-columns: 1fr auto 1fr;
-    grid-template-rows: auto auto;
-    /* grid-gap: 10px;  */
+    /* grid-template-columns: 1fr auto 1fr; */
+    /* grid-template-rows: auto auto; */
     align-items: center;
+    justify-content: space-between;
     background-color: #344847;
     color: white;
     /* padding: 10px; */
@@ -20,17 +20,24 @@
   
   .start-menu {
     position: absolute;
-    bottom: 100%; /* This will position the menu right above the start button */
-    left: 0; /* Aligns the menu to the left edge of the start bar */
-    z-index: 10; /* Ensures the menu is above other elements */
-    grid-column: 1; /* Position it in the first column */
-    grid-row: 1; /* Span it across 3 rows */
-    /* bottom: 125px; Adjust based on the height of the start bar */
+    bottom: 100%; 
+    left: 0; 
+    z-index: 10; 
+    grid-column: 1; 
+    grid-row: 1; 
     background-color: white;
     color: black;
     border: 1px solid #ccc;
   }
 
+  .menu-icon, .menu-text {
+    margin: 0 0.5rem;  /* Add some margin around the icon and text */
+  }
+
+  .start-menu img{
+    width: 2rem;
+    height: 2rem;
+  }
   .start-button {
     /* grid-column: 1; */
     grid-row: 1;
@@ -38,16 +45,51 @@
     padding: 0.5rem 1rem;
     border-radius: 1rem;
     font-size: 1.15rem;
+    margin-left: .5rem;
   }
   
   .menu-group {
 
     display: flex;
     flex-direction: column;
-    padding: 5px;
   } 
+
+  .menu-group a, .menu-group button {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border: none;
+    background: none;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+/* Hover effect */
+.menu-group a:hover, .menu-group button:hover {
+    background-color: #f0f0f0;
+}
+
+  .minimized-windows{
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
 
   .minimized-windows button {
     margin: 0 5px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    max-width: 10rem;
+    height: 2rem;
+    /* opacity: 0.5; */
   }
   
+  .time {
+    margin-left: auto;
+    padding-right: 1rem;
+  }

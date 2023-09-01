@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef} from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { minimizeWindow } from "../../actions/windowActions";
 import { getWindows } from '../../selectors/windowSelectors';
-import GitHubIcon from '../../assets/icons8-github-48.svg';
-import LinkedInIcon from '../../assets/icons8-linkedin-48.svg';
+import GitHubIcon from '../../assets/icons8-github-48.png';
+import LinkedInIcon from '../../assets/icons8-linkedin-48.png';
 import ArticleWriterIcon from '../../assets/icons8-typewriter-40.png';
 import NewsReaderIcon from '../../assets/icons8-newspaper-48.png';
 import './StartBar.css';
@@ -56,10 +56,22 @@ const StartBar =  React.forwardRef(({startBarHeight,onHeightChange,menuItemOpen}
             { isMenuOpen && (
                 <div className="start-menu" ref={startMenuRef}>
                     <ul className="menu-group">
-                        <a href="https://github.com/slothcodes" target="blank"><img src={GitHubIcon} alt="Github"/>GitHub</a>
-                        <a href="https://www.linkedin.com/" target="blank"><img src={LinkedInIcon} alt="LinkedIn"/>LinkedIn</a>
-                        <button onClick={()=> {menuItemOpen('Article Writer'), setIsMenuOpen(false)}}><img src={ArticleWriterIcon} alt="Article Writer"/>Article Writer</button>
-                        <button onClick={()=> {menuItemOpen('News Reader'), setIsMenuOpen(false)}}> <img src={NewsReaderIcon} alt="News Reader"/>News Reader</button>
+                        <a href="https://github.com/slothcodes" target="blank">
+                            <span className="menu-icon"><img src={GitHubIcon} alt="Github"/></span>
+                            <span className="menu-text">GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/" target="blank">
+                            <span className="menu-icon"><img src={LinkedInIcon} alt="LinkedIn"/></span>
+                            <span className="menu-text">LinkedIn</span>
+                        </a>
+                        <button onClick={()=> {menuItemOpen('Article Writer'), setIsMenuOpen(false)}}>
+                            <span className="menu-icon"><img src={ArticleWriterIcon} alt="Article Writer"/></span>
+                            <span className="menu-text">Article Writer</span>
+                        </button>
+                        <button onClick={()=> {menuItemOpen('News Reader'), setIsMenuOpen(false)}}>
+                            <span className="menu-icon"><img src={NewsReaderIcon} alt="News Reader"/></span>
+                            <span className="menu-text">News Reader</span>
+                        </button>
                     </ul>
                     
                 </div>

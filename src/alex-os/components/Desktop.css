@@ -9,7 +9,7 @@
   position: 'absolute';
   bottom: '5vh'; 
   overflow: 'hidden';
-  height: 100%;
+  height: 90%;
   width: 100%;
   
 }
@@ -38,7 +38,7 @@
   z-index: 0;
   /* Align to the left with a small margin */
   margin-left: 1rem;
-  margin-top: 1rem;
+  margin-top: 0rem;
   
   /* Center the child elements relative to each other */
   display: flex;
