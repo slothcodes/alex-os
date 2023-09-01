@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../components/Header.jsx';
 import Body from '../components/Body.jsx';
+import './NewsReader.css';
 
 const NewsReader = () => {
     const [stories, setStories] = React.useState({'sports':[],'news':[],'gaming':[],'tech':[]});
@@ -26,7 +27,7 @@ const NewsReader = () => {
         }
         fetchNews();
         
-    }, []);
+    }, [category]);
     // filter news stories by category    
     React.useEffect(() => {
         getCategory();
@@ -58,7 +59,7 @@ const NewsReader = () => {
     };
 
     return (
-        <div>
+        <div className='newsreader'>
             <h1>NewsReader</h1>
             <Header category= {category} setCategory={setCategory} sliceLength={sliceLength} handleSliceChange={handleSliceChange}/>  
             {loading ? <h1>Loading...</h1>: <Body stories={activeStories} sliceLength={sliceLength} />}

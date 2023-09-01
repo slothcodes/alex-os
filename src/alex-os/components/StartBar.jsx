@@ -7,6 +7,7 @@ import LinkedInIcon from '../../assets/icons8-linkedin-48.svg';
 import ArticleWriterIcon from '../../assets/icons8-typewriter-40.png';
 import NewsReaderIcon from '../../assets/icons8-newspaper-48.png';
 import './StartBar.css';
+import { focusWindow } from "../../redux/combinedActions";
 
 const StartBar =  React.forwardRef(({startBarHeight,onHeightChange,menuItemOpen},ref) => {
     const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString());
@@ -68,7 +69,7 @@ const StartBar =  React.forwardRef(({startBarHeight,onHeightChange,menuItemOpen}
                 {openWindowsList.map((window) => (
                     window.isMinimized && <button
                         key={window.id}
-                        onClick={() => dispatch(minimizeWindow(window.id))}
+                        onClick={() => dispatch(minimizeWindow(window.id),focusWindow(window.id))}
                     >
                         {window.id}
                     </button>

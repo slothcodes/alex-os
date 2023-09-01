@@ -1,5 +1,3 @@
-import { EditorState, convertToRaw } from "draft-js";
-
 // Parent component actions
 export const OPEN_WINDOW = "OPEN_WINDOW";
 export const CLOSE_WINDOW = "CLOSE_WINDOW";
@@ -9,9 +7,9 @@ export const FOCUS_WINDOW = "FOCUS_WINDOW";
 export const MOVE_WINDOW = "MOVE_WINDOW";
 // Child actions from slice files
 export const SET_ARTICLE = "article/setArticle";
-export const ADD_TO_OUTLINE = "outline/addToOutline";
+export const ADD_TO_OUTLINE = "outline/addToOutLine"//"outLineSlice/addToOutLine";
 export const REMOVE_FROM_OUTLINE = "outline/removeFromOutline";
-export const SET_LIST = "promptResults/setList";
+export const SET_LIST = "outlinePromptResults/setList";
 
 // combined action creators
 

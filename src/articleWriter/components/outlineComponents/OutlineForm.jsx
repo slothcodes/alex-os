@@ -58,11 +58,12 @@ export default function OutlineForm() {
         const results = await response.json()
         // split results into list
         const resultList = results.response[0].split('\n')
+        console.log('form result list',resultList)
         dispatch(setList(resultList))
       }
 
     }
-
+    console.log('resultslist',useSelector(state => state.promptResults.results))
   return (
     <div>
       <form onSubmit={handleSubmit} className="prompt-form">

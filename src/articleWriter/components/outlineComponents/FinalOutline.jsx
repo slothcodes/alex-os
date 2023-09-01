@@ -15,7 +15,7 @@ export default function FinalOutline() {
     }
     const outlineList = useSelector(state => state.outline.outline)
     const outlineListComponents = outlineList.map((item,index) => {
-        return <SubheadingCard key={index} Subheading={item} clickHandler={handleRemoveClick} disabled={false}/>
+        return <SubheadingCard key={index} Subheading={item} clickHandler={handleRemoveClick} disabled={false} buttonText='Remove'/>
     })
     return (
         <div className="final-outline">

@@ -3,8 +3,7 @@ import OutlineForm from "../components/outlineComponents/OutlineForm";
 import OutlinePromptResults from "../components/outlineComponents/OutlinePromptResults";
 import FinalOutline from "../components/outlineComponents/FinalOutline";
 import {Button} from '@mui/material'
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector,useDispatch  } from "react-redux";
 import { setArticle } from "../../redux/combinedActions.js";
 import { getOutline, getArticle } from "../../redux/combinedSelectors";
 import { ContentState, convertFromRaw, convertToRaw } from "draft-js";
@@ -13,9 +12,11 @@ export default function OutlineContainer(props) {
         // add clickhandler to button to send user to article editor 
         console.log('props',props)
         const dispatch = useDispatch()
-        const outLineList = useSelector(getOutline(state => state))//.outline.outline))
+        const outLineList = useSelector(state => getOutline(state))
+
+        //.outline.outline))
         console.log('outline',outLineList)
-        const articleState = useSelector(getArticle(state => state.article.article))
+        const articleState = useSelector(state => getArticle(state))
         const clickHandler = async () => {
             // send request for article to backend
             const article = await fetch('api/getArticle', {

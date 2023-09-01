@@ -33,6 +33,7 @@ const WindowManager = (props) => {
     };
 
     const handleMinimize = (id) => {
+        dispatch(focusWindow(id))
         dispatch(minimizeWindow(id));
     };
 

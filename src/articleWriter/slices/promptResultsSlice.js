@@ -7,6 +7,7 @@ const outlinePromptResults = createSlice({
     },
     reducers: {
         setList: (state, action) => {
+            console.log('setting list', action.payload);
             state.results = action.payload;
         }
 

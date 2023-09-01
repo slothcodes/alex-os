@@ -62,12 +62,14 @@ const Desktop = (props) => {
                 {icons.map((icon) => {
                 return(
                 <div className='desktop-icon no-select' key={icon.windowId}>
+                    <div>
                     <img
                         src={icon.src}
                         alt={`Icon for ${icon.windowId}`}
                         onClick={() => dispatch(openWindow(icon.windowId,startingX,startingY,mobileView))}
                     />
                     <h3>{icon.windowId}</h3>
+                    </div>
                 </div>
                 )
             })} 

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import OutlineContainer from './containers/OutlineContainer'
 import EditorContainer from './containers/EditorContainer'
+import './ArticleWriterApp.css'
 
 function ArticleWriterApp(props) {
   const [editorState, setEditorState] = useState(false)

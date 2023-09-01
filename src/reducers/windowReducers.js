@@ -13,14 +13,15 @@ export const windowReducer = (state = initialState, action) => {
     let updatedWindows;
     switch (action.type) {
         case OPEN_WINDOW:
-            console.log('opening window', action.startingX, action.startingY)
+            console.log('opening window', action.payload, action.startingX, action.startingY)
             updatedWindows = state.windows.map(window => {
                 if (window.id === action.payload) {
-                    const newWindow = { ...window, isVisible: true, isMinimized: true, position: {x: action.startingX, y: action.startingY,isMaximized: action.mobileView ? true: false } };
+                    const newWindow = { ...window, isVisible: true, zIndex: 2, isFocused: true, isMinimized: true, position: {x: action.startingX, y: action.startingY,isMaximized: action.mobileView ? true: false } };
                     console.log('new window', newWindow)
                     return newWindow;
+                } else {
+                    return {...window, zIndex:1, isFocused: false}
                 }
-                return window;
             });
 
             // if (!state.windows.some(window => window.id === action.payload)) {
@@ -38,11 +39,14 @@ export const windowReducer = (state = initialState, action) => {
             return { ...state, windows: updatedWindows };
 
         case MINIMIZE_WINDOW:
+            console.log('minimizing window', action.payload)
             updatedWindows = state.windows.map(window => {
                 if (window.id === action.payload) {
-                    return { ...window, isVisible: !window.isVisible };
+                    const zIndex = window.isMinimized ? 2 : 1
+                    console.log('zIndex', zIndex)
+                    return { ...window, isVisible: !window.isVisible, zIndex: zIndex };
                 }
-                return window;
+                return {...window, zIndex: 1};
             });
             return { ...state, windows: updatedWindows };
 
@@ -59,8 +63,10 @@ export const windowReducer = (state = initialState, action) => {
         case FOCUS_WINDOW:
             updatedWindows = state.windows.map(window => {
                 if (window.id === action.payload) {
+                    console.log('focusing window', window.id)
                     return { ...window, zIndex: 2 };
                 }
+                console.log('unfocusing window', window.id)
                 return { ...window, zIndex: 1 };
             });
             return { ...state, windows: updatedWindows };

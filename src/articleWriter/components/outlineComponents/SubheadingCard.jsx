@@ -10,7 +10,7 @@ export default function SubheadingCard(props) {
             <div className="subheading-text">
                 <p>{props.Subheading}</p>
             </div>
-            <Button value={props.Subheading} variant="contained" onClick={props.clickHandler} disabled={props.disabled}>Add</Button>
+            <Button value={props.Subheading} variant="contained" onClick={props.clickHandler} disabled={props.disabled}>{props.buttonText}</Button>
         </div>
     )
 }

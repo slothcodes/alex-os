@@ -2,7 +2,7 @@
   display: flex; 
   flex-direction: column; 
   justify-content: space-between;
-  background: linear-gradient(45deg, rgb(52, 31, 103), rgb(225, 78, 193));
+  background: linear-gradient(45deg, rgb(0,0,0), rgb(88,143,200));
   flex: 1; /* Allow the desktop to grow and take up all available space 
   overflow: auto; /* Add scroll if the content inside desktop overflows*/
   z-index: 0; /* Make sure the desktop is behind the taskbar */
@@ -29,6 +29,11 @@
   align-items: flex-start;
 }
 
+.desktop-background h3 {
+  color: aliceblue;
+  text-decoration: none;
+}
+
 .desktop-icon{
   z-index: 0;
   /* Align to the left with a small margin */
@@ -42,4 +47,9 @@
   min-width: 7rem;  /* accommodate the widest text */
   text-align: center;  /* Center the text */
 }
+
+.desktop-icon :hover {
+  cursor: pointer;
+  background-color: aqua;
+} 
 
