@@ -2,10 +2,10 @@ import { OPEN_WINDOW, CLOSE_WINDOW, MINIMIZE_WINDOW, MAXIMIZE_WINDOW, FOCUS_WIND
 
 const initialState = {
     windows: [
-        {id: "Resume", position: {x: 100, y: 0}, isFocused: false, isVisible: true, isMinimized: false, isMaximized: false, zIndex: 2, content:"ResumeWindow"},
-        {id: "News Reader", position: {x: 0, y: 0}, isFocused: false, isVisible: true, isMinimized: false, isMaximized: false, zIndex: 2, content:'window2'},
-        {id: "Article Writer", position: {x: 0, y: 0}, isFocused: false, isVisible: true, isMinimized: false, isMaximized: false, zIndex: 2, content:'window2'},
-        {id: "React Projects", position: {x: 0, y: 0}, isFocused: false, isVisible: true, isMinimized: false, isMaximized: false, zIndex: 2, content:'React Projects'},
+        {id: "Resume", position: {x: 100, y: 0}, isFocused: false, isVisible: false, isMinimized: false, isMaximized: false, zIndex: 2, content:"ResumeWindow"},
+        {id: "News Reader", position: {x: 0, y: 0}, isFocused: false, isVisible: false, isMinimized: false, isMaximized: false, zIndex: 2, content:'window2'},
+        {id: "Article Writer", position: {x: 0, y: 0}, isFocused: false, isVisible: false, isMinimized: false, isMaximized: false, zIndex: 2, content:'window2'},
+        {id: "React Projects", position: {x: 0, y: 0}, isFocused: false, isVisible: false, isMinimized: false, isMaximized: false, zIndex: 2, content:'React Projects'},
     ]
 };
 
@@ -13,11 +13,9 @@ export const windowReducer = (state = initialState, action) => {
     let updatedWindows;
     switch (action.type) {
         case OPEN_WINDOW:
-            console.log('opening window', action.payload, action.startingX, action.startingY)
             updatedWindows = state.windows.map(window => {
                 if (window.id === action.payload) {
                     const newWindow = { ...window, isVisible: true, zIndex: 2, isFocused: true, isMinimized: true, position: {x: action.startingX, y: action.startingY,isMaximized: action.mobileView ? true: false } };
-                    console.log('new window', newWindow)
                     return newWindow;
                 } else {
                     return {...window, zIndex:1, isFocused: false}
@@ -39,11 +37,9 @@ export const windowReducer = (state = initialState, action) => {
             return { ...state, windows: updatedWindows };
 
         case MINIMIZE_WINDOW:
-            console.log('minimizing window', action.payload)
             updatedWindows = state.windows.map(window => {
                 if (window.id === action.payload) {
                     const zIndex = window.isMinimized ? 2 : 1
-                    console.log('zIndex', zIndex)
                     return { ...window, isVisible: !window.isVisible, zIndex: zIndex };
                 }
                 return {...window, zIndex: 1};
@@ -53,7 +49,6 @@ export const windowReducer = (state = initialState, action) => {
         case MAXIMIZE_WINDOW:
             updatedWindows = state.windows.map(window => {
                 if (window.id === action.payload) {
-                    console.log('maximizing window', window)
                     return { ...window, isMaximized: !window.isMaximized, position: {x: 0, y: 0} };
                 }
                 return window;
@@ -63,16 +58,13 @@ export const windowReducer = (state = initialState, action) => {
         case FOCUS_WINDOW:
             updatedWindows = state.windows.map(window => {
                 if (window.id === action.payload) {
-                    console.log('focusing window', window.id)
                     return { ...window, zIndex: 2 };
                 }
-                console.log('unfocusing window', window.id)
                 return { ...window, zIndex: 1 };
             });
             return { ...state, windows: updatedWindows };
         
         case MOVE_WINDOW:
-            console.log('moving window', action.payload)
             updatedWindows = state.windows.map(window => {
                 if (window.id === action.payload.id) {
                     return { ...window, position: {x: action.payload.x, y:action.payload.y} };

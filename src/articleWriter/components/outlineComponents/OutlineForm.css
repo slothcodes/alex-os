@@ -1,0 +1,26 @@
+
+.writing-app h1 {
+    margin-bottom: 0px;
+}
+
+.prompt-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.MuiInputBase-root {
+    margin-top: 1rem;
+}
+
+.MuiFormLabel-root {
+    margin-top: 1rem;
+}
+
+/* .MuiTextField-root {
+    margin-top: 1rem;
+}
+
+.MuiFormControl-root {
+    margin-top: 1rem;
+} */

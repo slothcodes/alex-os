@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Editor, EditorState, convertToRaw, convertFromRaw, ContentState } from 'draft-js';
 import { useSelector, useDispatch } from "react-redux";
 import { setArticle } from "../../../redux/combinedActions.js";
-
+import './TextEditor.css'
 export default function TextEditor(props) {
   const dispatch = useDispatch();
   // get article text for editor
@@ -19,9 +19,9 @@ export default function TextEditor(props) {
     // Convert the new editor state to raw content and dispatch to Redux
     dispatch(setArticle(convertToRaw(newEditorState.getCurrentContent())));
   };
-
+  
   return (
-    <div className="text-editor" style={{ minHeight: '200px', border: '1px solid #ddd' }}>
+    <div className="text-editor">
         <Editor editorState={editorState} onChange={handleEditorChange} />
     </div>
   );

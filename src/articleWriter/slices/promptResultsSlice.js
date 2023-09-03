@@ -3,11 +3,10 @@ import { createSlice } from '@reduxjs/toolkit';
 const outlinePromptResults = createSlice({
     name: 'outlinePromptResults',
     initialState: {
-        results: ['hello test world']
+        results: ['hello test world','testing this out', 'yet another testing input']
     },
     reducers: {
         setList: (state, action) => {
-            console.log('setting list', action.payload);
             state.results = action.payload;
         }
 

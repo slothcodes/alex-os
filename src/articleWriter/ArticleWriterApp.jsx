@@ -11,7 +11,7 @@ function ArticleWriterApp(props) {
   
   return (
     <>
-      <div className="card">
+      <div className="writing-app">
         {editorState ? <EditorContainer setEditorState = {editorHandler}/> : <OutlineContainer setEditorState = {editorHandler}/>}
 
       </div>

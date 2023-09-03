@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef} from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { minimizeWindow } from "../../actions/windowActions";
+import { openWindow, minimizeWindow } from "../../actions/windowActions";
 import { getWindows } from '../../selectors/windowSelectors';
 import GitHubIcon from '../../assets/icons8-github-48.png';
 import LinkedInIcon from '../../assets/icons8-linkedin-48.png';
@@ -51,6 +51,16 @@ const StartBar =  React.forwardRef(({startBarHeight,onHeightChange,menuItemOpen}
         }
     }, []);
 
+    const openMenuItem = (id) => {
+        // get window id from button
+        const window = openWindowsList.find((window) => window.id === id);
+        // get window position from redux store
+        const windowPosition = window.position;
+        // open window at position
+        dispatch(openWindow(id,windowPosition.x,windowPosition.y))
+        // close menu
+        setIsMenuOpen(false);
+    }
     return (
         <div className="start-bar" ref={ref}>
             { isMenuOpen && (
@@ -60,15 +70,15 @@ const StartBar =  React.forwardRef(({startBarHeight,onHeightChange,menuItemOpen}
                             <span className="menu-icon"><img src={GitHubIcon} alt="Github"/></span>
                             <span className="menu-text">GitHub</span>
                         </a>
-                        <a href="https://www.linkedin.com/" target="blank">
+                        <a href="https://www.linkedin.com/in/william-davis-webdev/" target="blank">
                             <span className="menu-icon"><img src={LinkedInIcon} alt="LinkedIn"/></span>
                             <span className="menu-text">LinkedIn</span>
                         </a>
-                        <button onClick={()=> {menuItemOpen('Article Writer'), setIsMenuOpen(false)}}>
+                        <button onClick={()=> {openMenuItem('Article Writer')}}>
                             <span className="menu-icon"><img src={ArticleWriterIcon} alt="Article Writer"/></span>
                             <span className="menu-text">Article Writer</span>
                         </button>
-                        <button onClick={()=> {menuItemOpen('News Reader'), setIsMenuOpen(false)}}>
+                        <button onClick={()=> {openMenuItem('News Reader')}}>
                             <span className="menu-icon"><img src={NewsReaderIcon} alt="News Reader"/></span>
                             <span className="menu-text">News Reader</span>
                         </button>

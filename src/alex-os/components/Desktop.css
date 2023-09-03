@@ -17,7 +17,6 @@
 .no-select {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none;   /* Safari */
-  -khtml-user-select: none;    /* Konqueror HTML */
   -moz-user-select: none;      /* Firefox */
   -ms-user-select: none;       /* Internet Explorer/Edge */
   user-select: none;           /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
@@ -38,7 +37,7 @@
   z-index: 0;
   /* Align to the left with a small margin */
   margin-left: 1rem;
-  margin-top: 0rem;
+  margin-top: 1rem;
   
   /* Center the child elements relative to each other */
   display: flex;
@@ -46,6 +45,10 @@
   align-items: center;
   min-width: 7rem;  /* accommodate the widest text */
   text-align: center;  /* Center the text */
+}
+
+.desktop-icon h3 {
+    font: icon
 }
 
 .desktop-icon :hover {

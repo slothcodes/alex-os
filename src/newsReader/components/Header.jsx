@@ -1,22 +1,24 @@
 import React from 'react';
 // import mui select
 import { Select, MenuItem, FormControl, InputLabel, TextField, Button } from '@mui/material';
+import './styles/Header.css';
+
 
 const Header = (props) => {
     const handleDropdownChange = (event) => {
         props.setCategory(event.target.value);
     };
     return (
-        <div>
+        <div className='newsControls'>
+
             <div className="selectCategory">
-                <h1>Header</h1>
                 <FormControl>
-                    <InputLabel id="prompt-selection">Options</InputLabel>
+                    <InputLabel id="prompt-selection">Topics</InputLabel>
                     <Select
                         labelId="category-selection"
                         id="category-selection"
                         value={props.category}
-                        label="Options"
+                        label="Topics"
                         onChange={handleDropdownChange}
                     >
                         <MenuItem value="1">News</MenuItem>
@@ -27,18 +29,21 @@ const Header = (props) => {
                 </FormControl>
             </div>
             <div className="sliceLength">
-                <label htmlFor="sliceLength">Stories per page:</label>
-                <Select labelId="length-selection"
-                id="stories-length"
-                value={props.sliceLength}
-                label="Options"
-                onChange={props.handleSliceChange}
-                >
-                    <MenuItem value="10">10</MenuItem>
-                    <MenuItem value="25">25</MenuItem>
-                    <MenuItem value="50">50</MenuItem>
-                    <MenuItem value="100">100</MenuItem>
-                </Select>
+                <FormControl>
+                    <InputLabel id="length-selection">Count</InputLabel>
+                    <Select labelId="length-selection"
+                        id="stories-length"
+                        value={props.sliceLength}
+                        label="Count"
+                        onChange={props.handleSliceChange}
+                        >
+                        <MenuItem value="5">5</MenuItem>
+                        <MenuItem value="10">10</MenuItem>
+                        <MenuItem value="20">20</MenuItem>
+                    </Select>
+                </FormControl>
+                {/* <label htmlFor="sliceLength">Count</label> */}
+                
             </div>
         </div>
     );

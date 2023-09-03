@@ -9,8 +9,6 @@ const AppWindow = React.forwardRef((props,ref) => {
     const handleWindowFocus = (e) => {
         props.onFocusToggle(props.appId);
     };
-    console.log('ismax',props.isMaximized)
-    console.log('mobileView',props.mobileView)
     const top = props.isMaximized ? 0 : props.position.y;
     const left = props.isMaximized ? 0 : props.position.x;
     return (

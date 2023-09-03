@@ -10,9 +10,9 @@
 
 .windowContent {
     background-color: snow;
-    /* max-height: calc(100% - 3rem); 2rem is the height of the title bar */
-    height: 98%;
-    /* overflow-y: auto; */
+    height: 95%;
+    overflow-y: auto;
+    font-family: Montserrat;
 }
 
 
@@ -28,17 +28,11 @@
 
 .no-select {
     -webkit-touch-callout: none;
-    /* iOS Safari */
     -webkit-user-select: none;
-    /* Safari */
     -khtml-user-select: none;
-    /* Konqueror HTML */
     -moz-user-select: none;
-    /* Firefox */
     -ms-user-select: none;
-    /* Internet Explorer/Edge */
-    user-select: none;
-    /* Supported by Chrome, Opera and Firefox */
+    user-select: none;/
 }
 
 @media screen and (min-width: 600px) {

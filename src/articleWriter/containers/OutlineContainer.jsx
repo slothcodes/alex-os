@@ -7,15 +7,12 @@ import { useSelector,useDispatch  } from "react-redux";
 import { setArticle } from "../../redux/combinedActions.js";
 import { getOutline, getArticle } from "../../redux/combinedSelectors";
 import { ContentState, convertFromRaw, convertToRaw } from "draft-js";
+import './OutlineContainer.css'
 
 export default function OutlineContainer(props) {
         // add clickhandler to button to send user to article editor 
-        console.log('props',props)
         const dispatch = useDispatch()
         const outLineList = useSelector(state => getOutline(state))
-
-        //.outline.outline))
-        console.log('outline',outLineList)
         const articleState = useSelector(state => getArticle(state))
         const clickHandler = async () => {
             // send request for article to backend
@@ -29,7 +26,6 @@ export default function OutlineContainer(props) {
             // get response from backend
             const articleJson = await article.json()
             // convert article to raw for draftjs
-            console.log('article',articleJson.response)
             const convertedToContentState = ContentState.createFromText(articleJson.response[0]) 
             const convertedArticle = convertToRaw(convertedToContentState)
             dispatch(setArticle(convertedArticle))
@@ -38,7 +34,7 @@ export default function OutlineContainer(props) {
             props.setEditorState()
         }
         return (
-            <div>
+            <div className="outlineContainer">
                 <OutlineForm />
                 <OutlinePromptResults />
                 <FinalOutline />

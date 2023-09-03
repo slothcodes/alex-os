@@ -1,0 +1,10 @@
+.editor-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.editor-buttons button {
+    margin-top: .25rem;
+    max-width: 10rem;
+    padding: .5rem;
+}

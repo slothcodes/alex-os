@@ -1,0 +1,21 @@
+.final-outline {
+    background-color: #c0c3ca;
+    margin-top: .5rem;
+}
+
+.final-outline h4 {
+    color: white;
+}
+
+.final-outline-empty {
+    display: flex;
+    flex-direction: column;
+    background-color: #5f666b;
+    color: white;
+    margin-top: .5rem;
+
+}
+
+.MuiButtonBase-root {
+    justify-self: center;
+}

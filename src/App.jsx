@@ -12,7 +12,6 @@ React.useEffect(() => {
         setStartBarHeight(startBarRef.current.offsetHeight);
     }
 }, []);
-    console.log('startBarHeight', startBarHeight);
   return (
       <div className='appContainer'>
           <Desktop startBarHeight={startBarHeight}/>

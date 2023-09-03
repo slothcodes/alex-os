@@ -1,0 +1,8 @@
+.outlineContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+/* .outlineContainer button {
+    margin-top: .25rem;
+}  */

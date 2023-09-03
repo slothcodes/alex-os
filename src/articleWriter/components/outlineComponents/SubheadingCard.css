@@ -1,0 +1,18 @@
+.prompt-results{
+    background-color: #c0c3ca;
+}
+
+.subheading-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #5f666b;
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+    color: white;
+}
+
+.subheading-card:hover {
+    background-color: #949ea5;
+    color: black;
+}

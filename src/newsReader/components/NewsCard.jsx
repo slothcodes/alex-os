@@ -8,9 +8,14 @@ const NewsCard = (props) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const pubDate = date.toLocaleDateString('en-US', options);
     return (
-        <div className={`newsCard ${props.className}`}>
-           <a href={props.story.url} target="_blank" rel="noopener noreferrer" onClick={()=>{props.handleLinkClick(props.story.url)}}>{props.story.title} {pubDate}</a>    
-        </div>
+        <div className='newsEntry'>
+            <a href={props.story.url} target="_blank" rel="noopener noreferrer" onClick={()=>{props.handleLinkClick(props.story.url)}}>
+                <div className={`newsCard ${props.className}`}>
+                    {props.story.title} {pubDate}
+                </div>
+            </a> 
+        </div>   
+       
     );
 }
 

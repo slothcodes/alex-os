@@ -3,6 +3,7 @@ import {setList,addToOutline} from '../../../redux/combinedActions'
 import { useDispatch, useSelector } from "react-redux";
 import SubheadingCard from "./SubheadingCard";
 import { convertToRaw } from 'draft-js';
+import './OutlinePromptResults.css'
 
 export default function OutlinePromptResults() {
     const dispatch = useDispatch();
@@ -14,25 +15,15 @@ export default function OutlinePromptResults() {
     const handleAddClick = (event) => {
         // get text from subheading card from the value of the button
         const subheadingText = event.target.value
-        console.log('subheading text',subheadingText)
         // add subheading to outline state
         dispatch(addToOutline(subheadingText))
     }
- 
-    //const [resultsList,setResultsList] = React.useState([])
 
-
-    
-    console.log('Results results list',resultsFromRedux)
-    console.log('selected array',selectedArray)
     const subheadingComponents = resultsFromRedux.map((item,index) => {
-            console.log('item:',item)
             // check whether subheading is already in outline and disable button if it is
-            //const selectedArray = useSelector(state => state.outline.outline)
             const inList = selectedArray.includes(item)
             return <SubheadingCard key={index} Subheading={item} clickHandler={handleAddClick} disabled={inList} buttonText='Add'/>
     })
-    console.log('subheading components',subheadingComponents)
 
     return (
         <div className="prompt-results">

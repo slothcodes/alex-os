@@ -1,6 +1,7 @@
 import React from "react";
 import NewsCard from "./NewsCard.jsx";
-import {Select, MenuItem } from '@mui/material';
+import {Select, MenuItem, Button } from '@mui/material';
+import './styles/Body.css';
 
 const Body = (props) => {
     const [visitedStories, setVisitedStories] = React.useState([]);
@@ -33,7 +34,7 @@ const Body = (props) => {
     const lastIndex = currentPage * props.sliceLength;
     const firstIndex = lastIndex - props.sliceLength;
     const currentStories = props.stories.slice(firstIndex, lastIndex);
-    const newsCards = currentStories.map((story) => { //props.stories.map((story) => {
+    const newsCards = currentStories.map((story) => {
         return (
             <NewsCard 
                 key={story.id} 
@@ -46,12 +47,11 @@ const Body = (props) => {
 
     return (
         <div className="newsBody">
-            <h1>Body</h1>
-            
+            <h1>Stories</h1>
             {newsCards}
             <div className="pagination">
-                <button onClick={handlePrevPage} disabled={currentPage === 1}>Previous</button>
-                <button onClick={handleNextPage} disabled={currentPage === Math.ceil(props.stories.length / props.sliceLength)}>Next</button>
+                <Button onClick={handlePrevPage} disabled={currentPage === 1}>Previous</Button>
+                <Button onClick={handleNextPage} disabled={currentPage === Math.ceil(props.stories.length / props.sliceLength)}>Next</Button>
             </div>
 
         </div>

@@ -10,7 +10,6 @@ export const getArticle = (state) => {
 }
 
 export const getOutline = (state) => {
-    console.log('state',state);
     return state.outline.outline;
 }
 

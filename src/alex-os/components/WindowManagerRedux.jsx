@@ -16,15 +16,11 @@ const WindowManager = (props) => {
     const dispatch = useDispatch();
     const windowRef = useRef(null);
     const windows = useSelector(getWindows);
-    console.log('windows', windows);
-    console.log('windowManagerMobile', props.mobileView)
     const handleMove = (id, newX, newY) => {
-            console.log('handleMove to new pos', newX, newY);
             dispatch(moveWindow(id, newX, newY)); 
     };
 
-    const handleFocusToggle = (id) => {
-        console.log('setting focus');        
+    const handleFocusToggle = (id) => {     
         dispatch(focusWindow(id));
     };
 
@@ -61,7 +57,6 @@ const WindowManager = (props) => {
                 const windowId = e.target.closest("[data-app-id]").dataset.appId;
                 handleFocusToggle(windowId)
                 if (e.target.className === 'control-bar') {
-                    console.log('mouse down function fired')
                     handleSetIsDragging(true);
                     setDraggedWindowId(windowId);
                     lastMousePosition.current = { x: e.clientX, y: e.clientY };
@@ -79,34 +74,22 @@ const WindowManager = (props) => {
     const lastMousePosition = useRef({ x: 0, y: 0 });
     const handleMouseMove = (e) => {
         if (!isDragging || !draggedWindowId) return;
-        console.log('handlemousemove');
         const currentWindow = windows.find(win => win.id === draggedWindowId);
-        console.log('currentWindow', currentWindow);
         if (!currentWindow) return;
-
         // get the window width and height from the ref
         const draggedWindowRef = windowRefs.current.get(draggedWindowId)
         const width = props.width
         const height = props.height - props.startBarHeight
-        console.log(e.clientX, e.clientY)
-        console.log('width',width,'height',height)
         // Calculate the distance the mouse has moved
         const dx = e.clientX - lastMousePosition.current.x;
         const dy = e.clientY - lastMousePosition.current.y;
         lastMousePosition.current = { x: e.clientX, y: e.clientY };
-        console.log('lastMousePosition.current.x', lastMousePosition.current.x, 'lastMousePosition.current.y', lastMousePosition.current.y)
-
-
         // calculate the new window position
-        console.log('current window', currentWindow)
         let newX = currentWindow.position.x + dx;
         let newY = currentWindow.position.y + dy;
-        console.log('newX', newX, 'newY', newY)
         // Ensure The Window Does Not Get Dragged Off Screen
-        console.log('currentwindow width', draggedWindowRef.current.clientWidth, 'currentwindow height', draggedWindowRef.current.clientHeight)
         newX = Math.min(Math.max(newX, 0), window.innerWidth - draggedWindowRef.current.clientWidth);
         newY = Math.min(Math.max(newY, 0), window.innerHeight - (draggedWindowRef.current.clientHeight + props.startBarHeight));
-        console.log('currentWindow.position.x', currentWindow.position.x, 'currentWindow.position.y', currentWindow.position.y)
         handleMove(draggedWindowId, newX, newY);
     };
 
@@ -115,7 +98,6 @@ const WindowManager = (props) => {
         if (e.target.className === 'control-bar') {
             handleSetIsDragging(true);
             setDraggedWindowId(windowId);
-            console.log('e.clientX', e.touches[0].clientX, 'e.clientY', e.touches[0].clientY)
             lastMousePosition.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
         }
     };
@@ -127,34 +109,23 @@ const WindowManager = (props) => {
 
     const handleTouchMove = (e) => {
         if (!isDragging || !draggedWindowId) return;
-        console.log('handletouchmove');
         const currentWindow = windows.find(win => win.id === draggedWindowId);
-        console.log('currentWindow', currentWindow);
         if (!currentWindow) return;
 
         // get the window width and height from the ref
         const draggedWindowRef = windowRefs.current.get(draggedWindowId)
         const width = props.width//draggedWindowRef.current.clientWidth
         const height = props.height - props.startBarHeight//draggedWindowRef.current.clientHeight;
-        console.log(e.clientX, e.clientY)
-        console.log('width',width,'height',height)
         // Calculate the distance the mouse has moved
         const dx = e.touches[0].clientX - lastMousePosition.current.x;
         const dy = e.touches[0].clientY - lastMousePosition.current.y;
         lastMousePosition.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-        console.log('lastMousePosition.current.x', lastMousePosition.current.x, 'lastMousePosition.current.y', lastMousePosition.current.y)
-
-
         // calculate the new window position
-        console.log('current window', currentWindow)
         let newX = currentWindow.position.x + dx;
         let newY = currentWindow.position.y + dy;
-        console.log('newX', newX, 'newY', newY)
         // Ensure The Window Does Not Get Dragged Off Screen
-        console.log('currentwindow width', draggedWindowRef.current.clientWidth, 'currentwindow height', draggedWindowRef.current.clientHeight)
         newX = Math.min(Math.max(newX, 0), window.innerWidth - draggedWindowRef.current.clientWidth);
         newY = Math.min(Math.max(newY, 0), window.innerHeight - (draggedWindowRef.current.clientHeight + props.startBarHeight));
-        console.log('currentWindow.position.x', currentWindow.position.x, 'currentWindow.position.y', currentWindow.position.y)
         handleMove(draggedWindowId, newX, newY);
     };
 
@@ -208,13 +179,11 @@ const WindowManager = (props) => {
         } 
     };
 
-    console.log('windows', windows);
     const windowRefs = useRef(new Map()) //windows.map(window => React.createRef())) //.current;
     const windowComponents = windows.map((window) => {
         if (!windowRefs.current.has(window.id)) {
             windowRefs.current.set(window.id, React.createRef());
         }
-        console.log('window', window);
         if (window.isVisible) {
             return (
                 <AppWindow
@@ -246,9 +215,6 @@ const WindowManager = (props) => {
     return (
         <div>
             <div>{windowComponents}</div>
-            {/* <div>
-                <StartBar windows={windows} onFocusToggle={handleFocusToggle} menuItemOpen={() => console.log('open')} />
-            </div> */}
         </div>
     );
 };

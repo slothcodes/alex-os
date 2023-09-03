@@ -10,9 +10,8 @@ const ResumeWindow = () => {
       <ul>
         <li>Name: Alex Davis</li>
         <li>Email: william.alex.davis@gmail.com</li>
-        <li>Phone: 303-332-3116</li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/william-davis-webdev" target="_blank" rel="noopener noreferrer">linkedin.com/in/william-davis-webdev</a></li>
-        <li>GitHub: <a href="https://github.com/slothcodes" target="_blank" rel="noopener noreferrer">github.com/slothcodes</a></li>
+        <li><a href="https://linkedin.com/in/william-davis-webdev" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://github.com/slothcodes" target="_blank" rel="noopener noreferrer">Github</a></li>
       </ul>
       
       <h2>Summary</h2>

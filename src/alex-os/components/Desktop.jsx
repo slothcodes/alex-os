@@ -1,8 +1,5 @@
 import React from 'react';
 import WindowManagerRedux from './WindowManagerRedux';
-import AppWindow from './AppWindow';
-import StartBar from './StartBar';
-import ResumeWindow from './ResumeWindow';
 import './Desktop.css';
 import { useDispatch } from 'react-redux';
 import { openWindow, closeWindow, focusWindow } from '../../actions/windowActions.js';
@@ -32,18 +29,15 @@ const Desktop = (props) => {
             }
         }
     }, []);
-    console.log('initial mobileView', mobileView)
     const startBarRef = React.useRef(null);
     React.useEffect(() => {
         if (startBarRef.current) {
             const height = `${startBarRef.current.offsetHeight}px`;
-            console.log('StartBarheight', height);
             document.documentElement.style.setProperty('--start-bar-height', height);
         }
     }, [startBarRef]);
 
     const icons = [
-        {src: AboutMeIcon, windowId: 'About Me'},
         {src: ResumeIcon, windowId: 'Resume'},
         {src: NewsReaderIcon, windowId: 'News Reader'},
         {src: ArticleWriterIcon, windowId: 'Article Writer'},

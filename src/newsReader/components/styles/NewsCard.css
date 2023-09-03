@@ -1,3 +1,36 @@
 .visited {
     background-color: red; /* or any color you prefer */
 }
+
+.newsCard {
+    /* background-color: #344847; Background color inherited from StartBar */
+    background-color: lightslategray;
+    color: white; /* Text color */
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    padding: .5rem;
+    margin: .25rem;
+   
+}
+
+.newsEntry a {
+    color: white; 
+    text-decoration: none; 
+}
+
+.newsCard a {
+    color: white; 
+    text-decoration: none; 
+    transition: background-color 0.3s ease; 
+}
+
+.newsCard:hover {
+    /* background-color: #2e3d40; Slightly darker shade for hover */
+    background-color: lightsteelblue;
+    cursor: pointer; /* Change cursor to hand on hover */
+}
+
+.newsCard:hover a {
+    /* background-color: lightsteelblue; Slightly darker shade for hover */
+    cursor: pointer; /* Change cursor to hand on hover */
+}

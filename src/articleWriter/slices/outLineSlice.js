@@ -8,11 +8,9 @@ const outLineSlice = createSlice({
     },
     reducers: {
         addToOutLine: (state,action) => {
-            console.log('adding to outline', action.payload);
             state.outline = [...state.outline, action.payload];
         }, 
         removeFromOutline: (state,action) => {
-            console.log('removing from outline', action.payload);
             state.outline = state.outline.filter((item) => item !== action.payload);
         }  
     }

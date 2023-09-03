@@ -1,0 +1,12 @@
+.text-editor {
+    min-height: 200px; 
+    border: 3px solid grey;
+}
+
+.writing-app-container {
+    margin: 1rem
+}
+
+/* .writing-app button {
+    margin-top: .5rem;
+} */

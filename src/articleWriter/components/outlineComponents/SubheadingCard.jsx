@@ -2,6 +2,7 @@ import React from "react"
 import Button from '@mui/material/Button';
 import { useDispatch, useSelector } from "react-redux";
 import { addToOutline } from "../../../redux/combinedActions";
+import './SubheadingCard.css'
 
 export default function SubheadingCard(props) {
 

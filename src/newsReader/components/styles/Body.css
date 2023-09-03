@@ -1,0 +1,10 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.newsBody {
+    display: flex;
+    flex-direction: column;
+
+}

@@ -7,7 +7,7 @@ const NewsReader = () => {
     const [stories, setStories] = React.useState({'sports':[],'news':[],'gaming':[],'tech':[]});
     const [loading, setLoading] = React.useState(true);
     const [activeStories, setActiveStories] = React.useState([]); 
-    const [category, setCategory] = React.useState(1);
+    const [category, setCategory] = React.useState('1');
     const [sliceLength, setSliceLength] = React.useState(25);
     
     // fetch news stories on load
@@ -17,24 +17,24 @@ const NewsReader = () => {
                 const response = await fetch('/getNews');
                 const data = await response.json();
                 setStories(data.results);
-                setCategory('1');
-                getCategory();
+                getCategory();  // Update the active stories based on the initial category
                 setLoading(false);
-                
             } catch (error) {
                 console.error('Error fetching news:', error);
             }
         }
         fetchNews();
-        
-    }, [category]);
-    // filter news stories by category    
+    }, []);
+
     React.useEffect(() => {
         getCategory();
-    }, [category]);
+    }, [stories,category]);
+    // filter news stories by category    
+    // React.useEffect(() => {
+    //     getCategory();
+    // }, [category]);
     // change number of stories per page
     const handleSliceChange = (event) => {
-        console.log('slice length changed', event.target.value)
         setSliceLength(event.target.value);
     };
     // map selected category to news stories

@@ -1,0 +1,12 @@
+
+
+.newsControls {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.selectCategory {
+    display: flex;
+    align-items: center;
+}

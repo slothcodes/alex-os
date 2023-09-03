@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import {setList} from '../../../redux/combinedActions'
 import { useDispatch } from "react-redux";
 import Tooltip from '@mui/material/Tooltip';
+import './OutlineForm.css'
 
 export default function OutlineForm() {
     const [promptSelection, setPromptSelection] = React.useState('questions');
@@ -25,7 +26,6 @@ export default function OutlineForm() {
     const validatePromptInput = () => {
       // check if input is between minimum and maximum number of characters
       if (inputValue.length < 1 || inputValue.length > 200) {
-        console.log("Prompt must be between 1 and 200 characters")
         setShowTooltip(true);
          // Hide the tooltip after 2 seconds
         setTimeout(() => {
@@ -33,7 +33,6 @@ export default function OutlineForm() {
         }, 2000);
         return
       }
-      console.log("Valid prompt")
       setShowTooltip(false);
       return null; // Indicates valid prompt
     }
@@ -58,17 +57,16 @@ export default function OutlineForm() {
         const results = await response.json()
         // split results into list
         const resultList = results.response[0].split('\n')
-        console.log('form result list',resultList)
         dispatch(setList(resultList))
       }
 
-    }
-    console.log('resultslist',useSelector(state => state.promptResults.results))
+    }    
   return (
     <div>
+      <h1>Article Writer</h1>
       <form onSubmit={handleSubmit} className="prompt-form">
         <Tooltip title="Input is required" open={showTooltip}>
-        <TextField id="outlined-basic" label="Outlined" variant="outlined" onChange={handleChange}/>
+        <TextField className='outlineInputField' id="outlined-basic" label="Keyword" variant="outlined" onChange={handleChange} />
         </Tooltip>
         <FormControl>
           <InputLabel id="prompt-selection">Options</InputLabel>
@@ -87,7 +85,7 @@ export default function OutlineForm() {
             <MenuItem value="benefits">Benefits</MenuItem> 
           </Select>         
         </FormControl>
-        <Button variant="contained" type="submit" onSubmit={handleSubmit}>Default</Button>
+        <Button variant="contained" type="submit" onSubmit={handleSubmit}>Get Subheadings</Button>
       </form>
       <div className="prompt-results">
 

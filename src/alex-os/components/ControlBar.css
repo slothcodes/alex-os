@@ -3,6 +3,12 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
+    background-color: lightslategrey;
+}
+
+.control-bar img {
+    max-width: 1.5rem;
+    max-height: 1.5rem;
 }
 
 .no-select {
