@@ -3,7 +3,8 @@ import React from "react";
 const NewsReaderAppInfo = () => {
   return (
     <div className="newsReaderAppInfo">
-      <h1>News Reader App - A Full-Stack Development Project</h1>
+      <h1>RSS News App </h1>
+      <a href="https://github.com/slothcodes/news-reader" target="_blank" rel="noopener noreferrer">See On GitHub</a>
       
       <h2>Introduction</h2>
       <p>Serving both as a full-stack example and a functional news aggregator, the News Reader App allows users to follow news topics. It uses React, API layers, and a MySQL database.</p>

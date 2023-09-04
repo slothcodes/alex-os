@@ -14,7 +14,33 @@
 }
 
 .alexOSAppInfo {
+    display: flex;
+    flex-direction: column;
     margin: 1rem;
+}
+
+.projectWindow a {
+    align-self: center;
+}
+
+.newsReaderAppInfo {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.articleWriterAssistantInfo {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.projectWindow h2 {
+    margin: 0px;
+}
+
+.projectWindow h3 {
+    margin: 0px;
 }
 
 .MuiInputBase-root {

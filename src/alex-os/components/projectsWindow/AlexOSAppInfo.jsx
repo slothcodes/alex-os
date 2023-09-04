@@ -4,6 +4,7 @@ const AlexOSAppInfo = () => {
   return (
     <div className="alexOSAppInfo">
       <h1>AlexOS App</h1>
+      <a href="https://github.com/slothcodes/alex-os" target="_blank" rel="noopener noreferrer">See On GitHub</a>
       
       <h2>Introduction</h2>
       <p>Welcome to the AlexOS App, a simulated desktop environment crafted to provide an immersive and interactive experience for visitors to my personal website.</p>
