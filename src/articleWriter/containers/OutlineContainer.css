@@ -3,6 +3,12 @@
     flex-direction: column;
 }
 
-/* .outlineContainer button {
-    margin-top: .25rem;
-}  */
+.outlineButtons {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: .5rem;
+}
+
+.outlineButtons button {
+    margin-bottom: .5rem;
+}

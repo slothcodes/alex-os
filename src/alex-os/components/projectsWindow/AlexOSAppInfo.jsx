@@ -6,38 +6,23 @@ const AlexOSAppInfo = () => {
       <h1>AlexOS App</h1>
       
       <h2>Introduction</h2>
-      <p>This AlexOS App is designed to mimic a desktop environment, providing an interactive and engaging 
-         experience for anyone visiting my personal website.</p>
+      <p>Welcome to the AlexOS App, a simulated desktop environment crafted to provide an immersive and interactive experience for visitors to my personal website.</p>
          
       <h2>Technical Highlights</h2>
       <h3>State Management with Redux</h3>
-      <p>The application extensively uses Redux for state management, ensuring a robust and maintainable codebase. 
-         This is particularly important for handling the state and positioning of the windows.</p>
+      <p>By employing Redux for state management, the app benefits from an intuitive and manageable codebase. This is particularly important for handling the state and positioning of the windows.</p>
          
       <h3>Component Architecture</h3>
-      <p>The website is written in React and employs a modular approach for maintainability. 
-         For instance, AppWindow.jsx is the base window component, while specialized windows like ResumeWindow.jsx 
-         and ProjectWindow.jsx handle the displayed content.</p>
+      <p>The application is built on React and leans heavily on a modular design. AppWindow.jsx operates as the fundamental window component, while specialized versions like ResumeWindow.jsx are displayed within this window as child components.</p>
          
       <h3>Responsive Design</h3>
-      <p>I attempted to follow responsive design practices wherever possible to allow the website to be usable 
-         on both desktop and mobile screens. This was challenging, especially for maintaining the functionalities 
-         of a desktop environment on mobile devices.</p>
+      <p>I've incorporated responsive design techniques to make the app usable across desktop and mobile platforms, a feat particularly challenging due to the complexities of mimicking a desktop environment on smaller screens.</p>
          
       <h3>Dynamic UI</h3>
-      <p>The WindowManagerRedux.jsx component uses React hooks and Redux to dynamically display the currently open windows, 
-         making it a centralized control panel for the app.</p>
-         
-      <h3>Best Practices</h3>
-      <p>Consistent naming conventions, modular design, and the use of functional components with hooks 
-         are some of the best practices followed in this project.</p>
-         
-      <h3>Commenting and Documentation</h3>
-      <p>Inline comments and modular organization make the codebase easy to navigate, 
-         significantly easing the process for future updates or team collaborations.</p>
-         
+      <p>WindowManagerRedux.jsx serves as a dynamic UI manager. By integrating React hooks and Redux, it can effectively display and control active windows.</p>
+             
       <h3>CSS Styling</h3>
-      <p>Each component has its associated CSS file, ensuring that styles are compartmentalized and easily managed.</p>
+      <p>Each component is styled with its dedicated CSS file, making it easier to manage and compartmentalize styles across the app.</p>
     </div>
   );
 };

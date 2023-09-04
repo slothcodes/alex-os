@@ -2,3 +2,7 @@
     height: 100%;
     overflow-y: auto;
 }
+
+.MuiInputLabel-outlined.MuiInputLabel-shrink {
+    overflow: visible;
+  }

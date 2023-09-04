@@ -164,17 +164,17 @@ const WindowManager = (props) => {
 
     const lookUpContent = (id) => {
         switch (id) {
-            case 'About Me':
-                return 'About Me';
             case 'Resume':
                 return <ResumeWindow/>;
             case 'News Reader':
                 return <NewsReader/>;
             case 'Article Writer':
                 return <ArticleWriterMain/>;
-            case 'React Projects':
+            case 'REACT Projects':
+                console.log('REACT Projects')
                 return <ProjectWindow/>;
             default:
+                console.log('No Match')
                 return 'No Content';
         } 
     };

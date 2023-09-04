@@ -3,9 +3,7 @@
   flex-direction: column; 
   justify-content: space-between;
   background: linear-gradient(45deg, rgb(0,0,0), rgb(88,143,200));
-  flex: 1; /* Allow the desktop to grow and take up all available space 
-  overflow: auto; /* Add scroll if the content inside desktop overflows*/
-  z-index: 0; /* Make sure the desktop is behind the taskbar */
+  flex: 1; /* Allow the desktop to grow and take up all available space */
   position: 'absolute';
   bottom: '5vh'; 
   overflow: 'hidden';
@@ -15,11 +13,11 @@
 }
 
 .no-select {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none;   /* Safari */
-  -moz-user-select: none;      /* Firefox */
-  -ms-user-select: none;       /* Internet Explorer/Edge */
-  user-select: none;           /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+  -webkit-touch-callout: none; 
+  -webkit-user-select: none;   
+  -moz-user-select: none;      
+  -ms-user-select: none;       
+  user-select: none;           
 }
  
 .desktop-background {

@@ -5,7 +5,7 @@ const initialState = {
         {id: "Resume", position: {x: 100, y: 0}, isFocused: false, isVisible: false, isMinimized: false, isMaximized: false, zIndex: 2, content:"ResumeWindow"},
         {id: "News Reader", position: {x: 0, y: 0}, isFocused: false, isVisible: false, isMinimized: false, isMaximized: false, zIndex: 2, content:'window2'},
         {id: "Article Writer", position: {x: 0, y: 0}, isFocused: false, isVisible: false, isMinimized: false, isMaximized: false, zIndex: 2, content:'window2'},
-        {id: "React Projects", position: {x: 0, y: 0}, isFocused: false, isVisible: false, isMinimized: false, isMaximized: false, zIndex: 2, content:'React Projects'},
+        {id: "REACT Projects", position: {x: 0, y: 0}, isFocused: false, isVisible: false, isMinimized: false, isMaximized: false, zIndex: 2, content:'React Projects'},
     ]
 };
 

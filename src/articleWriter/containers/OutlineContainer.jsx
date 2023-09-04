@@ -38,8 +38,11 @@ export default function OutlineContainer(props) {
                 <OutlineForm />
                 <OutlinePromptResults />
                 <FinalOutline />
-                <Button variant="contained" color="primary" onClick={clickHandler} >Write Article</Button>
-                {convertFromRaw(articleState).hasText() !== false ? <Button variant="contained" color="primary" onClick={props.setEditorState}>Article Editor</Button> : null}
+                <div className="outlineButtons">
+                    <Button variant="contained" color="primary" onClick={clickHandler} >Write Article</Button>
+                    {convertFromRaw(articleState).hasText() !== false ? <Button variant="contained" color="primary" onClick={props.setEditorState}>Article Editor</Button> : null}
+                </div>
+                
             </div>
         );
     }

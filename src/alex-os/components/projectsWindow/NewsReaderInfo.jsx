@@ -6,9 +6,7 @@ const NewsReaderAppInfo = () => {
       <h1>News Reader App - A Full-Stack Development Project</h1>
       
       <h2>Introduction</h2>
-      <p>The News Reader App is a full-stack application designed to deliver a personalized news reading experience. 
-         While serving as a convenient example of a full-stack project, it also has the practical purpose of making it 
-         easier to follow types of news topics that are interesting. It uses a React frontend, an API layer, and a MySQL database.</p>
+      <p>Serving both as a full-stack example and a functional news aggregator, the News Reader App allows users to follow news topics. It uses React, API layers, and a MySQL database.</p>
       
       <h2>Technical Highlights</h2>
       <h3>Summary</h3>

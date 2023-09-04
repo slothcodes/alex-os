@@ -24,11 +24,11 @@ export default function OutlinePromptResults() {
             const inList = selectedArray.includes(item)
             return <SubheadingCard key={index} Subheading={item} clickHandler={handleAddClick} disabled={inList} buttonText='Add'/>
     })
-
+    const isOutlinePopulated = resultsFromRedux.length > 0 ? true : false 
     return (
-        <div className="prompt-results">
+        <div className={isOutlinePopulated ? "prompt-results": "prompt-results-empty"}>
             <h1>Prompt Results</h1>
-            {subheadingComponents}
+            {isOutlinePopulated ? subheadingComponents: <h4>Please add some subheadings to your outline</h4>}
         </div>
     );
 }

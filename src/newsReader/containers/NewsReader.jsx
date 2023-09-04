@@ -8,7 +8,7 @@ const NewsReader = () => {
     const [loading, setLoading] = React.useState(true);
     const [activeStories, setActiveStories] = React.useState([]); 
     const [category, setCategory] = React.useState('1');
-    const [sliceLength, setSliceLength] = React.useState(25);
+    const [sliceLength, setSliceLength] = React.useState(5);
     
     // fetch news stories on load
     React.useEffect(() => {

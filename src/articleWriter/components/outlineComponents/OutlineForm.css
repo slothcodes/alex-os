@@ -1,6 +1,7 @@
 
 .writing-app h1 {
     margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 .prompt-form {
@@ -15,12 +16,5 @@
 
 .MuiFormLabel-root {
     margin-top: 1rem;
+    margin-left: 1rem;
 }
-
-/* .MuiTextField-root {
-    margin-top: 1rem;
-}
-
-.MuiFormControl-root {
-    margin-top: 1rem;
-} */

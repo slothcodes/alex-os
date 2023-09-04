@@ -41,7 +41,7 @@ const Desktop = (props) => {
         {src: ResumeIcon, windowId: 'Resume'},
         {src: NewsReaderIcon, windowId: 'News Reader'},
         {src: ArticleWriterIcon, windowId: 'Article Writer'},
-        {src: ReactProjectIcon, windowId: 'React Projects'}
+        {src: ReactProjectIcon, windowId: 'REACT Projects'}
     ];
     const startBarHeight = startBarRef.current ? startBarRef.current.offsetHeight : 0;
     // set starting position for windows

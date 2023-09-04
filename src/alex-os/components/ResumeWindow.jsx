@@ -15,22 +15,18 @@ const ResumeWindow = () => {
       </ul>
       
       <h2>Summary</h2>
-      <p>Experienced React Developer with a proven track record in web application development and a unique background in political science and SEO content creation. Bringing 9 years of experience as a freelancer to offer strong React, JavaScript, and API integration skills.</p>
+      <p>Versatile professional with a strong foundation in traditional web and React development, backed by 9 years of experience in freelance SEO writing. Offering a unique blend of technical and content creation skills to deliver complete web solutions.</p>
       
       <h2>Education</h2>
       <p>Bachelor's Degree in Political Science, Jacksonville State University, 2009</p>
 
-      <h2>Technical Skills</h2>
+      <h2>Skills</h2>
       <ul>
         <li>Front-End Development: React, JavaScript, CSS, HTML5</li>
         <li>Back-End Development: Node.js, Express</li>
         <li>Database Management: MySQL</li>
         <li>API Integration: RESTful APIs</li>
         <li>Miscellaneous: Git, Python</li>
-      </ul>
-
-      <h2>Other Skills</h2>
-      <ul>
         <li>SEO Writing</li>
         <li>Responsive Web Development</li>
       </ul>
@@ -38,29 +34,34 @@ const ResumeWindow = () => {
       <h2>Professional Experience</h2>
       <h3>Freelance SEO Writer (9 years)</h3>
       <ul>
-        <li>Produced SEO-driven content for clients across multiple industries, reaching readers in diverse markets and industries.</li>
-        <li>Collaborated with web developers and editors to create compelling content aligning with UX/UI design.</li>
-        <li>Conducted comprehensive keyword research and competitive analysis to influence content strategy.</li>
-        <li>Ensured high-quality and timely delivery.</li>
+        <li>Created SEO-focused content strategies for clients across various industries, expanding reach and increasing engagement.</li>
+        <li>Coordinated with development and editorial teams to create visually appealing and content-rich web pages.</li>
+        <li>Performed rigorous market analysis to identify content opportunities and strategies.</li>
+        <li>Delivered high-volumes of content while maintaining stringent quality and editorial standards.</li>
       </ul>
       
       <h2>Software Projects</h2>
       <h3>Writer's Assistant</h3>
       <ul>
-        <li>Developed a React-based web application to assist writers in creating headlines and rough drafts for keyword-focused articles.</li>
-        <li>Utilized Redux for efficient state management and integrated API for data retrieval.</li>
+        <li>Developed a React application that provided instant suggestions for keyword-centric headlines and drafts, improving article quality and reducing turnaround time.</li>
+        <li>Utilized Redux for comprehensive state management, using slices for modularity. </li>
+        <li>Use OpenAi API for data retrieval.</li>
         <li>Achieved responsive design, ensuring compatibility across desktop, tablet, and mobile platforms.</li>
       </ul>
 
       <h3>News Reader</h3>
       <ul>
-        <li>Designed and developed a news aggregation platform with React, Express, and MySQL to aggregate content from various news RSS feeds.</li>
+        <li>Created a full-stack news aggregation service using ReactJS, Express.js, and MySQL.</li>
+        <li>Built RESTful APIs using Express.js for backend data storage and retrieval in MySQL.</li>
+        <li>Used Material UI components for dropdowns, buttons, and form controls.</li>
         <li>Implemented news categorization and pagination features, enhancing user navigation and experience.</li>
       </ul>
 
       <h3>Personal Server</h3>
       <ul>
-        <li>Created a back-end server with Node.js and Express to interact with OpenAI's GPT-3.5 API and manage news data storage.</li>
+        <li>Developed an Express.js-based backend for my portfolio, focusing on modular design.</li>
+        <li>Integrated OpenAI GPT-3 for automated content creation and manipulation.</li>
+        <li>Created database functions for collecting and managing news stories.</li>
         <li>Implemented rate-limiting and optimized API calls for efficient performance.</li>
         <li>Set up endpoints to serve static React files and handle dynamic API requests.</li>
       </ul>

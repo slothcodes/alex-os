@@ -1,27 +1,16 @@
-/* Reset some default browser styles */
-body, h1, h2, h3, ul, p {
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Define the "window" for the resume */
+
   .resume {
     max-width: 100%; /* Take the full width of the "window" */
-    max-height: 95%; /* Set a maximum height for the "window" */
-    overflow-y: auto; /* Add scrollbar if content exceeds the height */
-    border: 1px solid #2D2D2D;
     padding: 20px;
     font-family: 'Helvetica', sans-serif;
     background-color: #F5F5F5;
   }
   
-  /* Add some spacing and centering of text */
   h1, h2, h3 {
     margin-bottom: 20px;
     text-align: center;
   }
-  
-  /* Add a little color */
+
   h1 {
     background-color: #3f848aba;
     color: white;
@@ -35,14 +24,13 @@ body, h1, h2, h3, ul, p {
   }
   
   h3 {
-    color: #007BFF;
-    text-decoration: underline;
+    color: #000000;
   }
-  
-  /* Adjust List Styles */
+
   ul {
     list-style-type: none;
     margin-bottom: 20px;
+    padding: 0px;
   }
   
   ul li {
@@ -53,7 +41,6 @@ body, h1, h2, h3, ul, p {
     border-radius: 4px; /* Slight rounding of corners */
   }
   
-  /* Add hyperlinks */
   a {
     color: #007BFF;
     text-decoration: none;
@@ -62,8 +49,7 @@ body, h1, h2, h3, ul, p {
   a:hover {
     text-decoration: underline;
   }
-  
-  /* Style the summary section */
+
   .summary {
     font-style: italic;
     margin-bottom: 20px;
