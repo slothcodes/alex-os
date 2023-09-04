@@ -2,7 +2,7 @@ import { OPEN_WINDOW, CLOSE_WINDOW, MINIMIZE_WINDOW, MAXIMIZE_WINDOW, FOCUS_WIND
 
 const initialState = {
     windows: [
-        {id: "Resume", position: {x: 100, y: 0}, isFocused: false, isVisible: false, isMinimized: false, isMaximized: false, zIndex: 2, content:"ResumeWindow"},
+        {id: "Resume", position: {x: 0, y: 0}, isFocused: false, isVisible: false, isMinimized: false, isMaximized: false, zIndex: 2, content:"ResumeWindow"},
         {id: "News Reader", position: {x: 0, y: 0}, isFocused: false, isVisible: false, isMinimized: false, isMaximized: false, zIndex: 2, content:'window2'},
         {id: "Article Writer", position: {x: 0, y: 0}, isFocused: false, isVisible: false, isMinimized: false, isMaximized: false, zIndex: 2, content:'window2'},
         {id: "REACT Projects", position: {x: 0, y: 0}, isFocused: false, isVisible: false, isMinimized: false, isMaximized: false, zIndex: 2, content:'React Projects'},
@@ -21,10 +21,6 @@ export const windowReducer = (state = initialState, action) => {
                     return {...window, zIndex:1, isFocused: false}
                 }
             });
-
-            // if (!state.windows.some(window => window.id === action.payload)) {
-            //     updatedWindows.push({ id: action.payload, isVisible: true, isMinimized: true });
-            // }
             return { ...state, windows: updatedWindows };
 
         case CLOSE_WINDOW:

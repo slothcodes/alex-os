@@ -2,8 +2,7 @@ import React from 'react';
 import WindowManagerRedux from './WindowManagerRedux';
 import './Desktop.css';
 import { useDispatch } from 'react-redux';
-import { openWindow, closeWindow, focusWindow } from '../../actions/windowActions.js';
-import AboutMeIcon from '../../assets/file48.svg';
+import { openWindow } from '../../actions/windowActions.js';
 import ResumeIcon from '../../assets/icons8-resume-48.png';
 import NewsReaderIcon from '../../assets/icons8-newspaper-48.png';
 import ArticleWriterIcon from '../../assets/icons8-typewriter-40.png';
@@ -39,15 +38,15 @@ const Desktop = (props) => {
 
     const icons = [
         {src: ResumeIcon, windowId: 'Resume'},
+        {src: ReactProjectIcon, windowId: 'REACT Projects'},
         {src: NewsReaderIcon, windowId: 'News Reader'},
-        {src: ArticleWriterIcon, windowId: 'Article Writer'},
-        {src: ReactProjectIcon, windowId: 'REACT Projects'}
+        {src: ArticleWriterIcon, windowId: 'Article Writer'}        
     ];
     const startBarHeight = startBarRef.current ? startBarRef.current.offsetHeight : 0;
     // set starting position for windows
     if (!mobileView) {
-        startingX = dimensions.width / 2
-        startingY = dimensions.height / 10
+        startingX = dimensions.width / 5
+        startingY = dimensions.height / 20
     }
 
     return (

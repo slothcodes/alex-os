@@ -1,8 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import ControlBar from './ControlBar.jsx';
-import { openWindow, closeWindow, moveWindow } from '../../actions/windowActions.js';
-import StartBar from './StartBar';
 import './AppWindow.css';
 
 const AppWindow = React.forwardRef((props,ref) => {
@@ -18,11 +15,10 @@ const AppWindow = React.forwardRef((props,ref) => {
             onTouchStart={handleWindowFocus}
             style={{
                 position: 'absolute',
-                top: top,//props.position.y,
-                left: left, //props.position.x,
+                top: top,
+                left: left, 
                 zIndex: props.zIndex,
                 backgroundColor: props.isFocused ? 'white' : 'lightgray',
-                // border: '1px solid black',
             }}
             data-app-id={props.appId}  // Important to identify the window
         >

@@ -171,7 +171,6 @@ const WindowManager = (props) => {
             case 'Article Writer':
                 return <ArticleWriterMain/>;
             case 'REACT Projects':
-                console.log('REACT Projects')
                 return <ProjectWindow/>;
             default:
                 console.log('No Match')

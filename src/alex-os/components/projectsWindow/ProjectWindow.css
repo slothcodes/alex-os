@@ -46,3 +46,7 @@
 .MuiInputBase-root {
     margin: 1rem;
 }
+
+.MuiSelect-select {
+    text-align: center;
+}

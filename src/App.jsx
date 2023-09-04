@@ -26,7 +26,7 @@ const osComponents = ()=> {
         </>  
     )
 }
-const appContent = isLoading ? [<LoadingScreen />] : osComponents()
+const appContent = isLoading ? <LoadingScreen /> : osComponents()
     
 
 return (
