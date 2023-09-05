@@ -166,9 +166,9 @@ const WindowManager = (props) => {
         switch (id) {
             case 'Resume':
                 return <ResumeWindow/>;
-            case 'News Reader':
+            case 'RSS Reader':
                 return <NewsReader/>;
-            case 'Article Writer':
+            case "Writer's Assistant":
                 return <ArticleWriterMain/>;
             case 'REACT Projects':
                 return <ProjectWindow/>;

@@ -14,8 +14,11 @@ export default function OutlineContainer(props) {
         const dispatch = useDispatch()
         const outLineList = useSelector(state => getOutline(state))
         const articleState = useSelector(state => getArticle(state))
+        const [isArticleLoading, setIsArticleLoading] = React.useState(false);
+        const [isSubLoading, setIsSubLoading] = React.useState(false);
         const clickHandler = async () => {
             // send request for article to backend
+            setIsArticleLoading(true)
             const article = await fetch('api/getArticle', {
                 method: 'POST',
                 headers: {
@@ -29,17 +32,20 @@ export default function OutlineContainer(props) {
             const convertedToContentState = ContentState.createFromText(articleJson.response[0]) 
             const convertedArticle = convertToRaw(convertedToContentState)
             dispatch(setArticle(convertedArticle))
+            setIsArticleLoading(false)
             // convert button to loading mui component while waiting for response
             // set article editor state to shown
             props.setEditorState()
+            
         }
+
         return (
             <div className="outlineContainer">
-                <OutlineForm />
-                <OutlinePromptResults />
-                <FinalOutline />
+                <OutlineForm setIsSubLoading={setIsSubLoading} isSubLoading={isSubLoading}/>
+                <OutlinePromptResults isSubLoading={isSubLoading}/>
+                <FinalOutline isArticleLoading={isArticleLoading} setIsArticleLoading={setIsArticleLoading}/>
                 <div className="outlineButtons">
-                    <Button variant="contained" color="primary" onClick={clickHandler} >Write Article</Button>
+                    <Button variant="contained" color="primary" onClick={clickHandler} disabled={isArticleLoading}>Write Article</Button>
                     {convertFromRaw(articleState).hasText() !== false ? <Button variant="contained" color="primary" onClick={props.setEditorState}>Article Editor</Button> : null}
                 </div>
                 

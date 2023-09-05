@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import Tooltip from '@mui/material/Tooltip';
 import './OutlineForm.css'
 
-export default function OutlineForm() {
+export default function OutlineForm(props) {
     const [promptSelection, setPromptSelection] = React.useState('questions');
     const [inputValue, setInputValue] = React.useState('');
     const [showTooltip, setShowTooltip] = React.useState(false);
@@ -36,11 +36,10 @@ export default function OutlineForm() {
       setShowTooltip(false);
       return null; // Indicates valid prompt
     }
-    
 
-    // handle submit to django backend
     const handleSubmit = async (event) => {
       event.preventDefault();
+      props.setIsSubLoading(true)
       if (validatePromptInput() === null) {
         // prepare data to send
         const dataToSend = {
@@ -58,6 +57,7 @@ export default function OutlineForm() {
         // split results into list
         const resultList = results.response[0].split('\n')
         dispatch(setList(resultList))
+        props.setIsSubLoading(false)
       }
 
     }    
@@ -85,7 +85,7 @@ export default function OutlineForm() {
             <MenuItem value="benefits">Benefits</MenuItem> 
           </Select>         
         </FormControl>
-        <Button variant="contained" type="submit" onSubmit={handleSubmit}>Get Subheadings</Button>
+        <Button variant="contained" type="submit" onSubmit={handleSubmit} disabled={props.isSubLoading}>Get Subheadings</Button>
       </form>
       <div className="prompt-results">
 

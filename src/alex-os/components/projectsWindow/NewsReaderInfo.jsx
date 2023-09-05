@@ -3,7 +3,7 @@ import React from "react";
 const NewsReaderAppInfo = () => {
   return (
     <div className="newsReaderAppInfo">
-      <h1>RSS News App </h1>
+      <h1>RSS Reader </h1>
       <a href="https://github.com/slothcodes/news-reader" target="_blank" rel="noopener noreferrer">See On GitHub</a>
       
       <h2>Introduction</h2>

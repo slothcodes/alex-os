@@ -1,6 +1,9 @@
 .final-outline {
     background-color: #c0c3ca;
-    margin-top: .5rem;
+    margin: .5rem 0;
+    display: flex;
+    flex-direction: column;
+
 }
 
 .final-outline h4 {

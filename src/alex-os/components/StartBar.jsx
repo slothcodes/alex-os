@@ -74,13 +74,13 @@ const StartBar =  React.forwardRef(({startBarHeight,onHeightChange,menuItemOpen}
                             <span className="menu-icon"><img src={LinkedInIcon} alt="LinkedIn"/></span>
                             <span className="menu-text">LinkedIn</span>
                         </a>
-                        <button onClick={()=> {openMenuItem('Article Writer')}}>
-                            <span className="menu-icon"><img src={ArticleWriterIcon} alt="Article Writer"/></span>
-                            <span className="menu-text">Article Writer</span>
+                        <button onClick={()=> {openMenuItem("Writer's Assistant")}}>
+                            <span className="menu-icon"><img src={ArticleWriterIcon} alt="Writer's Assistant"/></span>
+                            <span className="menu-text">Writer's Assist..</span>
                         </button>
-                        <button onClick={()=> {openMenuItem('News Reader')}}>
-                            <span className="menu-icon"><img src={NewsReaderIcon} alt="News Reader"/></span>
-                            <span className="menu-text">News Reader</span>
+                        <button onClick={()=> {openMenuItem('RSS Reader')}}>
+                            <span className="menu-icon"><img src={NewsReaderIcon} alt="RSS Reader"/></span>
+                            <span className="menu-text">RSS Reader</span>
                         </button>
                     </ul>
                     

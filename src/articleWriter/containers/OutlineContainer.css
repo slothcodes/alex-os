@@ -11,4 +11,9 @@
 
 .outlineButtons button {
     margin-bottom: .5rem;
+    margin-top: .5rem;
+}
+
+.MuiCircularProgress-root {
+    align-self: center;
 }

@@ -2,6 +2,11 @@
     margin: 0px;
 }
 
+.prompt-results {
+    display: flex;
+    flex-direction: column;
+}
+
 .prompt-results-empty {
     display: flex;
     flex-direction: column;

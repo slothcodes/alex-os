@@ -13,8 +13,8 @@ const ProjectInfo = () => {
 
   const projects = [
     { id: 1, name: 'AlexOS'},
-    { id: 2, name: 'News Reader'},
-    { id: 3, name: 'Article Writer'},
+    { id: 2, name: 'RSS Reader'},
+    { id: 3, name: "Writer's Assistant"},
   ];
 
   const handleChange = (event) => {

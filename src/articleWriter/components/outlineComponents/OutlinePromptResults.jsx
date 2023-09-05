@@ -3,9 +3,10 @@ import {setList,addToOutline} from '../../../redux/combinedActions'
 import { useDispatch, useSelector } from "react-redux";
 import SubheadingCard from "./SubheadingCard";
 import { convertToRaw } from 'draft-js';
+import {CircularProgress } from '@mui/material'
 import './OutlinePromptResults.css'
 
-export default function OutlinePromptResults() {
+export default function OutlinePromptResults(props) {
     const dispatch = useDispatch();
 
     // Get the data directly from Redux store
@@ -25,10 +26,14 @@ export default function OutlinePromptResults() {
             return <SubheadingCard key={index} Subheading={item} clickHandler={handleAddClick} disabled={inList} buttonText='Add'/>
     })
     const isOutlinePopulated = resultsFromRedux.length > 0 ? true : false 
+    const loadingComponent = <CircularProgress style={{'color': 'blue', 'alignSelf':'center'}} />
+    const contentComponent = isOutlinePopulated ? subheadingComponents: <h4>Please add some subheadings to your outline</h4> 
+    const content = isOutlinePopulated ? loadingComponent : contentComponent
     return (
         <div className={isOutlinePopulated ? "prompt-results": "prompt-results-empty"}>
             <h1>Prompt Results</h1>
-            {isOutlinePopulated ? subheadingComponents: <h4>Please add some subheadings to your outline</h4>}
+            {props.isSubLoading ? loadingComponent : null}
+            {contentComponent}
         </div>
     );
 }
